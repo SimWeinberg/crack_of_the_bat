@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Crack of The Bat!</title>
+</head>
+<body>
+    <div class="container-fluid container_main">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/coach/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Schedule</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/player/add/{{team.id}}">Add Player</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
+                    <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
+                        {% if coach.image_path != None %}
+                            <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                        {% else %}   
+                        {% endif %}
+                    </a>
+                </div>  
+            </div>
+        </nav>
+        {% if team.players %}
+            <div class="col-4 p-1">
+                <h2 class="fw-bold header_margin">{{team.name}} {{team.year}}</h2>
+            </div>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col"></th> 
+                        <th scope="col" class="fs-5 text-white">First Name</th>
+                        <th scope="col" class="fs-5 text-white">Last Name</th>
+                        <th scope="col" class="fs-5 text-white">Position</th>
+                        <th scope="col" class="fs-5 text-white">AVG</th>
+                        <th scope="col" class="fs-5 text-white">OBP</th>
+                        <th scope="col" class="fs-5 text-white">SLG</th>
+                        <th scope="col" class="fs-5 text-white">ERA</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in team.players %}   
+                        <tr>
+                            <td id="player_profile_pic_padding">
+                                <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
+                                    {% if player.image_path != None %}
+                                        <img class="profile_image" src="{{player.image_path}}" alt="profile image">
+                                    {% endif %}
+                                </a>
+                            </td>
+                            <td class="fw-bold">{{player.first_name}}</td>
+                            <td class="fw-bold">{{player.last_name}}</td>
+                            <td class="fw-bold">{{player.position}}</td>
+                            {% if player.avg == None %}
+                                <td></td>
+                            {% else %}
+                                <td class="fw-bold">{{player.avg}}</td>
+                            {% endif %}
+                            {% if player.obp == None %}
+                                <td></td>
+                            {% else %}
+                                <td class="fw-bold">{{player.obp}}</td>
+                            {% endif %}
+                            {% if player.slg == None %}
+                                <td></td>
+                            {% else %}
+                                <td class="fw-bold">{{player.slg}}</td>
+                            {% endif %}
+                            {% if player.era == None %}
+                                <td></td>
+                            {% else %}
+                                <td class="fw-bold">{{player.era}}</td>
+                            {% endif %}
+                            <td class="fw-bold"><a href="/player/edit/{{player.id}}">edit player</a></td>
+                            <td class="fw-bold"><a href="/player/edit/stats/{{player.id}}">edit stats</a></td>
+                            <td class="fw-bold"><a href="/player/delete/{{player.id}}/{{team.id}}">delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        <div class="text-center pt-5">
+            <h1 class="fw-bold display-4 welcome_margin_top">Add a player to get started</h1>
+        </div>
+        {% endif %} 
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+<html>       

@@ -1,0 +1,53 @@
+.container_main {
+    height: 1080px;
+    background-image: url('/static/images/little_league_field_1920x1080_ps_final_2.png');
+    padding: 0px;
+}
+
+.profile_div {
+    display: block; 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50px; 
+    background-image: url('/static/images/user_circle_30px.png')
+}
+
+.profile_image {
+    height: 30px; 
+    width: 30px; 
+    object-fit: cover;
+    border-radius:50px;
+}
+
+#flash_div_50h {
+    height: 50%;
+}
+
+.welcome_margin_top {
+    margin-top: 127px;
+}
+
+.header_margin {
+    margin-bottom: 4px;
+    padding-left: 8px;
+}
+
+#coach_table_fname_margin {
+    padding-left: 12px;
+}
+
+.nav_margin_bottom {
+    margin-bottom: 26.39px;
+}
+
+#player_profile_pic_padding {
+    padding-left: 12px;
+}
+
+#delete_warning_margin_bottom {
+    margin-bottom: 14px;
+}
+
+#home_welcome_padding_top {
+    padding-top: 104px;
+}
