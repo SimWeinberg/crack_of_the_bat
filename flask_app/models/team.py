@@ -10,6 +10,8 @@ REGEX = re.compile(r'^[2-9][0-9]+$')
 
 from flask_app.models import player
 
+from flask_app.models import game
+
 # db = 'your_db_here'
 
 class Team:
@@ -21,6 +23,7 @@ class Team:
         self.updated_at = data['updated_at']
         self.coach_id = data['coach_id']
         self.players = []
+        self.games = []
 
     @staticmethod
     def validate(team):
@@ -84,6 +87,30 @@ class Team:
                 "team_id" : row['team_id'],
             }
             team.players.append(player.Player(player_data))
+        return team
+
+    @classmethod
+    def get_team_and_games(cls, data):
+        query = "SELECT * FROM teams LEFT JOIN games ON teams.id = games.team_id WHERE teams.id = %(id)s;"
+        results = connectToMySQL(db).query_db(query, data)
+        team = cls(results[0])
+        for row in results:
+            if row['players.id'] == None:
+                break
+            game_data = {
+                "id" : row['id'],
+                "vs" : row['vs'],
+                "home_or_away" : row['home_or_away'],
+                "date" : row['date'],
+                "time" : row['time'],
+                "our_runs" : row['our_runs'],
+                "their_runs" : row['their_runs'],
+                "win_loss" : row['win_loss'],
+                "created_at" : row['created_at'],
+                "updated_at" : row['updated_at'],
+                "team_id" : row['team_id'],
+            }
+            team.games.append(game.Game(game_data))
         return team
     
     @classmethod
