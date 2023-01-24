@@ -95,7 +95,7 @@ class Team:
         results = connectToMySQL(db).query_db(query, data)
         team = cls(results[0])
         for row in results:
-            if row['players.id'] == None:
+            if row['games.id'] == None:
                 break
             game_data = {
                 "id" : row['id'],

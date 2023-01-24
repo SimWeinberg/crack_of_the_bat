@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Crack of The Bat!</title>
+</head>
+<body>
+    <div class="container-fluid container_main">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/coach/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Add Game</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
+                    <div class="profile_div">
+                        {% if coach.image_path != None %}
+                            <img class="profile_image" src="{{coach.image_path}}" alt="profile image">   
+                        {% endif %}
+                    </div>
+                </div>  
+            </div>
+        </nav>
+        {% if team.games %}
+            <div class="col-4 p-1">
+                <h2 class="fw-bold header_margin">{{team.name}} {{team.year}}</h2>
+            </div>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr> 
+                        <th scope="col" class="fs-5 text-white">vs</th>
+                        <th scope="col" class="fs-5 text-white">Home or Away</th>
+                        <th scope="col" class="fs-5 text-white">Date</th>
+                        <th scope="col" class="fs-5 text-white">Time</th>
+                        <th scope="col" class="fs-5 text-white">Our Runs</th>
+                        <th scope="col" class="fs-5 text-white">Their Runs</th>
+                        <th scope="col" class="fs-5 text-white">W/L</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for game in team.games %}   
+                        <tr>
+                            <td class="fw-bold">{{game.vs}}</td>
+                            <td class="fw-bold">{{game.home_or_away}}</td>
+                            <td class="fw-bold">{{game.date}}</td>
+                            <td class="fw-bold">{{game.time}}</td>
+                            {% if game.our_runs == None %}
+                                <td></td>
+                            {% else %}
+                                <td class="fw-bold">{{game.our_runs}}</td>
+                            {% endif %}
+                            {% if game.their_runs == None %}
+                                <td></td>
+                            {% else %}
+                                <td class="fw-bold">{{game.their_runs}}</td>
+                            {% endif %}
+                            {% if game.win_loss == None %}
+                                <td></td>
+                            {% else %}
+                                <td class="fw-bold">{{game.win_loss}}</td>
+                            {% endif %}
+                            <td class="fw-bold"><a href="#">edit game</a></td>
+                            <td class="fw-bold"><a href="#">delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        <div class="text-center pt-5">
+            <h1 class="fw-bold display-4 welcome_margin_top">Add a game to get started</h1>
+        </div>
+        {% endif %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+<html>
