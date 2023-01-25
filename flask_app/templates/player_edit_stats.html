@@ -26,11 +26,11 @@
                         </li>
                     </ul>
                     <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
-                    <div class="profile_div">
-                        {% if coach.image_path != None %}
-                            <img class="profile_image" src="{{coach.image_path}}" alt="profile image">  
-                        {% endif %}
-                    </div>
+                    {% if coach.image_path != None %}
+                        <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                    {% else %}
+                        <div class="profile_div"></div>   
+                    {% endif %}
                 </div>  
             </div>
         </nav>

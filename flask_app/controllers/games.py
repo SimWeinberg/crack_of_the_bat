@@ -17,3 +17,12 @@ def games_view(id):
         "id" : session['user_id']
     }
     return render_template('games_view.html', team = Team.get_team_and_games(team_id), coach = Coach.get_coach(coach_id))
+
+@app.route('/game/add/<int:id>')
+def game_add(id):
+    if not 'user_id' in session:
+        return redirect('/')
+    coach_id = {
+        "id" : session['user_id']
+    }
+    return render_template('game_add.html', team_id = id, coach = Coach.get_coach(coach_id))

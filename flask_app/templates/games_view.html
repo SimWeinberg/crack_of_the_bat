@@ -22,18 +22,18 @@
                             <a class="nav-link" href="/coach/dashboard">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Add Game</a>
+                            <a class="nav-link" href="/game/add/{{team.id}}">Add Game</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
                     <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
-                    <div class="profile_div">
-                        {% if coach.image_path != None %}
-                            <img class="profile_image" src="{{coach.image_path}}" alt="profile image">   
-                        {% endif %}
-                    </div>
+                    {% if coach.image_path != None %}
+                        <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                    {% else %}
+                        <div class="profile_div"></div>   
+                    {% endif %}
                 </div>  
             </div>
         </nav>
