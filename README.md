@@ -2,7 +2,7 @@
 ## Little league web app for coaches and parents
  **Coachs** build teams, update stats and post schedules.  
  **Parents** view teams, stats and schedules.  
-Initial commit == all coach features.  Parents and scheduling features to follow. 
+Currently developing schedule dashboard and features.
 
 ![Home](https://user-images.githubusercontent.com/98792095/212751264-3b751ea8-cd7b-4444-837b-9ecdef9c6b40.png)
 ![Registration](https://user-images.githubusercontent.com/98792095/212751340-3659ed73-c098-4581-aed3-2223720ca7f4.png)
