@@ -6,6 +6,8 @@ from flask import flash
 
 import re
 
+REGEX = re.compile(r'^[a-zA-z]+$')
+
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 from flask_app.models import team
@@ -29,6 +31,9 @@ class Coach:
         is_valid = True
         coach_name = [coach['first_name'], coach['last_name']]
         for i in coach_name:
+            if not REGEX.match(i):
+                flash("Name must be letters")
+                is_valid = False
             if len(i) < 2:
                 flash("Name must be at least 2 letters")
                 is_valid = False

@@ -6,7 +6,7 @@ from flask import flash, request
 
 import re
 
-REGEX = re.compile(r'^[0-9]+$')
+REGEX = re.compile(r'^[a-zA-z]+$')
 
 # db = 'your_db_here'
 
@@ -42,7 +42,7 @@ class Player:
             if len(i) < 1:
                 flash("Name must be at least 1 letter")
                 is_valid = False
-            if REGEX.match(i): 
+            if not REGEX.match(i): 
                 flash("Name is letters only")
                 is_valid = False
         return is_valid

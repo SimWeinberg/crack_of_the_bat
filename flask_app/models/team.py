@@ -6,7 +6,9 @@ from flask import flash, session
 
 import re
 
-REGEX = re.compile(r'^[2-9][0-9]+$')
+REGEX = re.compile(r'^[a-zA-z][a-zA-z\s]+$')
+
+REGEX_YEAR = re.compile(r'^[2-9][0-9]+$')
 
 from flask_app.models import player
 
@@ -28,13 +30,16 @@ class Team:
     @staticmethod
     def validate(team):
         is_valid = True
+        if not REGEX.match(team['name']):
+            flash("Name must letters")
+            is_valid = False
         if len(team['name']) < 3:
-            flash("Team name must be at least 3 characters")
+            flash("Name must be at least 3 letters")
             is_valid = False
         if len(team['year']) != 4:
             flash("Year must be 4 digits")
             is_valid = False
-        if not REGEX.match(team['year']): 
+        if not REGEX_YEAR.match(team['year']): 
             flash("Invalid year")
             is_valid = False
         return is_valid

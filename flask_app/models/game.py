@@ -6,7 +6,7 @@ from flask import flash, request
 
 import re
 
-REGEX = re.compile(r'^[a-zA-z\s]+$')
+REGEX = re.compile(r'^[a-zA-z][a-zA-z\s]+$')
 
 # db = 'your_db_here'
 
