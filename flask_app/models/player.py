@@ -8,7 +8,7 @@ import re
 
 REGEX = re.compile(r'^[a-zA-z]+$')
 
-# db = 'your_db_here'
+db = 'your_db_here'
 
 class Player:
     def __init__(self, data):
@@ -39,8 +39,8 @@ class Player:
         is_valid = True
         player = [player['first_name'], player['last_name']]
         for i in player:
-            if len(i) < 1:
-                flash("Name must be at least 1 letter")
+            if not (len(i) >= 1 and len(i) <= 15):
+                flash("Name must be 1-15 letters")
                 is_valid = False
             if not REGEX.match(i): 
                 flash("Name is letters only")

@@ -12,7 +12,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 from flask_app.models import team
 
-# db = 'your_db_here'
+db = 'your_db_here'
 
 class Coach:
     def __init__(self, data):
@@ -34,8 +34,8 @@ class Coach:
             if not REGEX.match(i):
                 flash("Name must be letters")
                 is_valid = False
-            if len(i) < 2:
-                flash("Name must be at least 2 letters")
+            if not (len(i) >= 2 and len(i) <= 15):
+                flash("Name must be 2-15 letters")
                 is_valid = False
         query = "SELECT * FROM coachs WHERE email = %(email)s;"
         results = connectToMySQL(db).query_db(query, coach)
@@ -45,8 +45,8 @@ class Coach:
         if not EMAIL_REGEX.match(coach['email']): 
             flash("Invalid email address")
             is_valid = False
-        if len(coach['password']) < 8:
-            flash("Password must be at least 8 characters")
+        if not (len(coach['password']) >= 8 and len(coach['password']) <= 15):
+            flash("Password must be 8-15 characters")
             is_valid = False
         pword = coach['password']
         pwordc = coach['confirm_password']

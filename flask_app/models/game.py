@@ -8,7 +8,7 @@ import re
 
 REGEX = re.compile(r'^[a-zA-z][a-zA-z\s]+$')
 
-# db = 'your_db_here'
+db = 'your_db_here'
 
 class Game:
     def __init__(self, data):
@@ -30,8 +30,8 @@ class Game:
         if not REGEX.match(game['vs']):
             flash("vs must be letters")
             is_valid = False
-        if len(game['vs']) > 20:
-            flash("vs must be 20 letters or less")
+        if not (len(game['vs']) >=3 and len(game['vs']) <= 20):
+            flash("vs must be 3-20 letters")
             is_valid = False
         game_data = [game['vs'], game['date'], game['time'], game['our_runs'], game['their_runs']]
         for i in game_data:
