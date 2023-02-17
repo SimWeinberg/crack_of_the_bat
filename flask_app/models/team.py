@@ -14,7 +14,7 @@ from flask_app.models import player
 
 from flask_app.models import game
 
-db = 'your_db_here'
+db = ''
 
 class Team:
     def __init__(self, data):
@@ -31,10 +31,10 @@ class Team:
     def validate(team):
         is_valid = True
         if not REGEX.match(team['name']):
-            flash("Name must letters")
+            flash("Name must be letters")
             is_valid = False
-        if not (len(team['name']) >= 3 and len(team['name']) <= 15):
-            flash("Name must be 3-15 letters")
+        if not (len(team['name']) >= 3 and len(team['name']) <= 20):
+            flash("Name must be 3-20 letters")
             is_valid = False
         if len(team['year']) != 4:
             flash("Year must be 4 digits")

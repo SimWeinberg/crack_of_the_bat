@@ -12,7 +12,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 from flask_app.models import team
 
-db = 'your_db_here'
+db = ''
 
 class Coach:
     def __init__(self, data):
@@ -27,7 +27,7 @@ class Coach:
         self.teams = []
 
     @staticmethod
-    def validate_registration(coach):
+    def validate(coach):
         is_valid = True
         coach_name = [coach['first_name'], coach['last_name']]
         for i in coach_name:

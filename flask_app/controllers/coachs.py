@@ -28,7 +28,7 @@ def login():
 
 @app.route('/register/coach', methods=['POST'])
 def register_coach():
-    if not Coach.validate_registration(request.form):
+    if not Coach.validate(request.form):
         return redirect('/register')
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     data = {

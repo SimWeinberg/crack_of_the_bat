@@ -8,7 +8,7 @@ import re
 
 REGEX = re.compile(r'^[a-zA-z][a-zA-z\s]+$')
 
-db = 'your_db_here'
+db = ''
 
 class Game:
     def __init__(self, data):
