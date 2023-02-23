@@ -60,5 +60,22 @@ class Game:
     
     @classmethod
     def update(cls, data):
+        if int(data['our_runs']) > int(data['their_runs']):
+            win_loss = "W"
+        elif int(data['our_runs']) < int(data['their_runs']):
+            win_loss = "L"
+        elif int(data['our_runs']) == int(data['their_runs']):
+            win_loss = "T"
+        query_data = {
+            "vs" : data['vs'],
+            "home_or_away" : data['home_or_away'],
+            "date" : data['date'],
+            "time" : data['time'],
+            "our_runs" : data['our_runs'],
+            "their_runs" : data['their_runs'],
+            "win_loss" : win_loss,
+            "team_id" : data['team_id'],
+            "id" : data['id']
+        }
         query = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;" 
-        return connectToMySQL(db).query_db(query, data)
+        return connectToMySQL(db).query_db(query, query_data)
