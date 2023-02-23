@@ -77,7 +77,7 @@
                             {% else %}
                                 <td class="fw-bold">{{game.win_loss}}</td>
                             {% endif %}
-                            <td class="fw-bold"><a href="#">edit game</a></td>
+                            <td class="fw-bold"><a href="/game/edit/{{game.id}}">edit</a></td>
                             <td class="fw-bold"><a href="#">delete</a></td>
                         </tr>
                     {% endfor %}

@@ -103,7 +103,7 @@ class Team:
             if row['games.id'] == None:
                 break
             game_data = {
-                "id" : row['id'],
+                "id" : row['games.id'],
                 "vs" : row['vs'],
                 "home_or_away" : row['home_or_away'],
                 "date" : row['date'],

@@ -135,7 +135,7 @@ class Player:
 
     @classmethod
     def update(cls, data):
-        query = "UPDATE players SET first_name = %(first_name)s, last_name = %(last_name)s, position = %(position)s  WHERE id = %(id)s;"
+        query = "UPDATE players SET first_name = %(first_name)s, last_name = %(last_name)s, position = %(position)s WHERE id = %(id)s;"
         return connectToMySQL(db).query_db(query, data)
 
     @classmethod

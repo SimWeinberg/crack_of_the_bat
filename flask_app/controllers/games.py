@@ -39,3 +39,26 @@ def game_create():
     Game.save(request.form)
     id = request.form['team_id']
     return redirect(f'/games/view/{id}')
+
+@app.route('/game/edit/<int:id>')
+def game_edit(id):
+    if not 'user_id' in session:
+        return redirect('/')
+    game_id = {
+        "id" : id
+    }
+    coach_id = {
+        "id" : session['user_id']
+    }
+    return render_template('game_edit.html', game = Game.get_one(game_id), coach = Coach.get_coach(coach_id))
+
+@app.route('/game/update', methods=['POST'])
+def game_update():
+    if not 'user_id' in session:
+        return redirect('/')
+    if not Game.validate(request.form):
+            id = request.form['id']
+            return redirect(f'/game/edit/{id}')
+    Game.update(request.form)
+    id = request.form['team_id']
+    return redirect(f'/games/view/{id}')
