@@ -72,6 +72,8 @@ class Coach:
                 "id" : row['teams.id'],
                 "name" : row['name'],
                 "year" : row['year'],
+                "wins" : row['wins'],
+                "losses" : row['losses'],
                 "created_at" : row['teams.created_at'],
                 "updated_at" : row['teams.updated_at'],
                 "coach_id" : row['coach_id'],

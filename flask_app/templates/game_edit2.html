@@ -37,11 +37,9 @@
         <div class="row d-flex justify-content-center">
             <div class="col-2 bg-dark text-light m-4 p-4">
                 <h3>Edit Game</h3>
-                <form action="/game/update" method="post">
+                <form action="/game/update2" method="post">
                     <input type="hidden" name="id" value="{{game.id}}">
                     <input type="hidden" name="team_id" value="{{game.team_id}}">
-                    <input type="hidden" name="team_wins" value="{{team.wins}}">
-                    <input type="hidden" name="team_losses" value="{{team.losses}}">
                     <input type="hidden" name="win_loss" value="{{game.win_loss}}">
                     <label for="vs">vs:</label>
                     <input type="text" class="form-control" name="vs" value="{{game.vs}}">

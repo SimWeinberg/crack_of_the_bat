@@ -21,6 +21,8 @@ class Team:
         self.id = data['id']
         self.name = data['name']
         self.year = data['year']
+        self.wins = data['wins']
+        self.losses = data['losses']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.coach_id = data['coach_id']
@@ -127,3 +129,19 @@ class Team:
     def delete(cls, data):
         query = "DELETE FROM teams WHERE id = %(id)s;"
         return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def get_record(cls, data):
+        if int(data['our_runs']) > int(data['their_runs']):
+            team_wins = int(data['team_wins']) + 1
+            team_losses = 0
+        elif int(data['our_runs']) < int(data['their_runs']):
+            team_losses = int(data['team_losses']) + 1
+            team_wins = 0
+        query_data = {
+            "wins" : team_wins,
+            "losses" : team_losses,
+            "team_id" : data['team_id']
+        }
+        query = "UPDATE teams SET wins = %(wins)s, losses = %(losses)s WHERE id = %(team_id)s;" 
+        return connectToMySQL(db).query_db(query, query_data)
