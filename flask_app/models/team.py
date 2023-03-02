@@ -124,6 +124,11 @@ class Team:
     def delete_players(cls, data):
         query = "DELETE FROM players WHERE team_id = %(id)s;"
         return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def delete_games(cls, data):
+        query = "DELETE FROM games WHERE team_id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)
 
     @classmethod
     def delete(cls, data):

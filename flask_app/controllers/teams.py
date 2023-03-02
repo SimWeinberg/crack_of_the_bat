@@ -68,7 +68,7 @@ def team_delete_warning(id):
     coach_id = {
         "id" : session['user_id']
     }
-    return render_template('team_delete_warning.html', team = Team.get_team_and_players(team_id), coach = Coach.get_coach(coach_id))
+    return render_template('team_delete_warning.html', team = Team.get_team_and_players(team_id), games = Team.get_team_and_games(team_id), coach = Coach.get_coach(coach_id))
 
 @app.route('/team/delete/<int:id>')
 def team_delete(id):
@@ -76,5 +76,6 @@ def team_delete(id):
         "id" : id
     }
     Team.delete_players(data)
+    Team.delete_games(data)
     Team.delete(data)
     return redirect('/coach/dashboard')
