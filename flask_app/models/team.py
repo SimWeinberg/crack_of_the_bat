@@ -28,6 +28,7 @@ class Team:
         self.coach_id = data['coach_id']
         self.players = []
         self.games = []
+        self.parents = []
 
     @staticmethod
     def validate(team):

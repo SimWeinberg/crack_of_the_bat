@@ -34,14 +34,14 @@ class Coach:
             if not REGEX.match(i):
                 flash("Name must be letters")
                 is_valid = False
-            if not (len(i) >= 2 and len(i) <= 15):
-                flash("Name must be 2-15 letters")
+            if not (len(i) >= 1 and len(i) <= 15):
+                flash("Name must be 1-15 letters")
                 is_valid = False
         query = "SELECT * FROM coachs WHERE email = %(email)s;"
         results = connectToMySQL(db).query_db(query, coach)
         if len(results) >= 1:
             flash("Email already taken")
-            is_valid=False
+            is_valid = False
         if not EMAIL_REGEX.match(coach['email']): 
             flash("Invalid email address")
             is_valid = False

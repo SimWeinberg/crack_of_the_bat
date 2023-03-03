@@ -8,5 +8,7 @@ from flask_app.controllers import players
 
 from flask_app.controllers import games
 
+from flask_app.controllers import parents
+
 if __name__ == "__main__":
     app.run(debug=True)
