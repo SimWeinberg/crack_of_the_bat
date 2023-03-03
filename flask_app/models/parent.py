@@ -26,7 +26,6 @@ class Parent:
 
     @staticmethod
     def validate(parent):
-        print(parent['email'])
         is_valid = True
         parent_name = [parent['first_name'], parent['last_name']]
         for i in parent_name:
@@ -36,11 +35,6 @@ class Parent:
             if not REGEX.match(i): 
                 flash("Name is letters only")
                 is_valid = False
-        query = "SELECT * FROM parents WHERE email = %(email)s;"
-        results = connectToMySQL(db).query_db(query, parent)
-        if len(results) >= 1:
-            flash("Email already taken")
-            is_valid = False
         if not EMAIL_REGEX.match(parent['email']): 
             flash("Invalid email address")
             is_valid = False
@@ -48,5 +42,6 @@ class Parent:
     
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO parents (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+        print(data)
+        query = "START TRANSACTION; INSERT INTO parents (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s); INSERT INTO teams_has_parents (team_id) VALUES (%(team_id)s; COMMIT;"
         return connectToMySQL(db).query_db(query, data)
