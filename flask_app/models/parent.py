@@ -43,5 +43,6 @@ class Parent:
     @classmethod
     def save(cls, data):
         print(data)
-        query = "START TRANSACTION; INSERT INTO parents (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s); INSERT INTO teams_has_parents (team_id) VALUES (%(team_id)s; COMMIT;"
-        return connectToMySQL(db).query_db(query, data)
+        query = "INSERT INTO parents (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+        query2 = "INSERT INTO teams_has_parents (parent_id, team_id) SELECT (SELECT MAX(id) FROM parents), %(team_id)s;"
+        return connectToMySQL(db).query_db(query, data), connectToMySQL(db).query_db(query2, data)
