@@ -6,6 +6,20 @@ from flask_app.models.parent import Parent
 
 from flask_app.models.coach import Coach
 
+from flask_app.models.team import Team
+
+@app.route('/parents/view/<int:id>')
+def parents_view(id):
+    if not 'user_id' in session:
+        return redirect('/')
+    team_id = {
+        "id" : id
+    }
+    coach_id = {
+        "id" : session['user_id']
+    }
+    return render_template('parents_view.html', team = Team.get_team_and_parents(team_id), coach = Coach.get_coach(coach_id))
+
 @app.route('/parent/add/<int:id>')
 def parent_add(id):
     if not 'user_id' in session:
@@ -24,4 +38,4 @@ def parent_create():
         return redirect(f'/parent/add/{id}')
     Parent.save(request.form)
     id = request.form['team_id']
-    return redirect(f'/team/view/{id}')
+    return redirect(f'/parents/view/{id}')

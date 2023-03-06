@@ -14,6 +14,8 @@ from flask_app.models import player
 
 from flask_app.models import game
 
+from flask_app.models import parent
+
 db = ''
 
 class Team:
@@ -119,6 +121,28 @@ class Team:
                 "team_id" : row['team_id'],
             }
             team.games.append(game.Game(game_data))
+        return team
+    
+    @classmethod
+    def get_team_and_parents(cls, data):
+        query = "SELECT * FROM teams LEFT JOIN teams_has_parents ON teams.id = teams_has_parents.team_id JOIN parents ON parents.id = teams_has_parents.parent_id WHERE teams_has_parents.team_id = %(id)s;"
+        results = connectToMySQL(db).query_db(query, data)
+        print(results)
+        team = cls(results[0])
+        for row in results:
+            if row['parents.id'] == None:
+                break
+            parent_data = {
+                "id" : row['parents.id'],
+                "first_name" : row['first_name'],
+                "last_name" : row['last_name'],
+                "email" : row['email'],
+                "password" : row['password'],
+                "created_at" : row['created_at'],
+                "updated_at" : row['updated_at'],
+                "team_id" : row['team_id'],
+            }
+            team.parents.append(parent.Parent(parent_data))
         return team
     
     @classmethod
