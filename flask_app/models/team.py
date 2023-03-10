@@ -164,14 +164,17 @@ class Team:
     def get_record(cls, data):
         if int(data['our_runs']) > int(data['their_runs']):
             team_wins = int(data['team_wins']) + 1
-            team_losses = 0
+            query_data = {
+            "wins" : team_wins,
+            "team_id" : data['team_id']
+            }
+            query = "UPDATE teams SET wins = %(wins)s WHERE id = %(team_id)s;" 
+            return connectToMySQL(db).query_db(query, query_data)
         elif int(data['our_runs']) < int(data['their_runs']):
             team_losses = int(data['team_losses']) + 1
-            team_wins = 0
-        query_data = {
-            "wins" : team_wins,
-            "losses" : team_losses,
-            "team_id" : data['team_id']
-        }
-        query = "UPDATE teams SET wins = %(wins)s, losses = %(losses)s WHERE id = %(team_id)s;" 
-        return connectToMySQL(db).query_db(query, query_data)
+            query_data = {
+                "losses" : team_losses,
+                "team_id" : data['team_id']
+            }
+            query = "UPDATE teams SET losses = %(losses)s WHERE id = %(team_id)s;" 
+            return connectToMySQL(db).query_db(query, query_data)

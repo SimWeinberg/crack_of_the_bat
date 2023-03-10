@@ -65,7 +65,6 @@ class Game:
         }
         query = "DELETE FROM games WHERE id = %(id)s;"
         query2 = "UPDATE teams SET wins = %(wins)s"
-        print("hello")
         return connectToMySQL(db).query_db(query, game_id), connectToMySQL(db).query_db(query2, wins)
     
     @classmethod
@@ -76,7 +75,6 @@ class Game:
         }
         query = "DELETE FROM games WHERE id = %(id)s;"
         query2 = "UPDATE teams SET losses = %(losses)s"
-        print("hello")
         return connectToMySQL(db).query_db(query, game_id), connectToMySQL(db).query_db(query2, losses)
 
     @classmethod
