@@ -92,3 +92,17 @@ def game_update2():
     Game.update(request.form)
     id = request.form['team_id']
     return redirect(f'/games/view/{id}')
+
+@app.route('/game/delete/<int:id>/<int:team_id>/<int:wins>/<int:losses>/<win_loss>')
+def delete_game(id, team_id, wins, losses, win_loss):
+    game_id = {
+        "id" : id
+    }
+    if win_loss == "W":
+        Game.delete_update_wins(game_id, wins)
+        return redirect(f'/games/view/{team_id}')
+    elif win_loss == "L":
+        Game.delete_update_losses(game_id, losses)
+        return redirect(f'/games/view/{team_id}')
+    Game.delete(game_id)
+    return redirect(f'/games/view/{team_id}')

@@ -53,6 +53,33 @@ class Game:
         return connectToMySQL(db).query_db(query, data)
     
     @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM games WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def delete_update_wins(cls, game_id, wins):
+        wins = wins - 1
+        wins = {
+            "wins" : wins
+        }
+        query = "DELETE FROM games WHERE id = %(id)s;"
+        query2 = "UPDATE teams SET wins = %(wins)s"
+        print("hello")
+        return connectToMySQL(db).query_db(query, game_id), connectToMySQL(db).query_db(query2, wins)
+    
+    @classmethod
+    def delete_update_losses(cls, game_id, losses):
+        losses = losses - 1
+        losses = {
+            "losses" : losses
+        }
+        query = "DELETE FROM games WHERE id = %(id)s;"
+        query2 = "UPDATE teams SET losses = %(losses)s"
+        print("hello")
+        return connectToMySQL(db).query_db(query, game_id), connectToMySQL(db).query_db(query2, losses)
+
+    @classmethod
     def get_one(cls, data):
         query  = "SELECT * FROM games WHERE id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
