@@ -44,17 +44,6 @@ def game_create():
 def game_edit(id, team_id, win_loss):
     if not 'user_id' in session:
         return redirect('/')
-    if (win_loss == "W") or (win_loss == "L") or (win_loss == "T"):
-        game_id = {
-            "id" : id
-        }
-        team_id = {
-            "id" : team_id
-        }
-        coach_id = {
-            "id" : session['user_id']
-        }
-        return render_template('game_edit2.html', game = Game.get_one(game_id), coach = Coach.get_coach(coach_id))
     game_id = {
         "id" : id
     }
@@ -68,20 +57,6 @@ def game_edit(id, team_id, win_loss):
         
 @app.route('/game/update', methods=['POST'])
 def game_update():
-    if not 'user_id' in session:
-        return redirect('/')
-    if not Game.validate(request.form):
-            id = request.form['id']
-            team_id = request.form['team_id']
-            win_loss = request.form['win_loss']
-            return redirect(f'/game/edit/{id}/{team_id}/{win_loss}')
-    Game.update(request.form)
-    Team.get_record(request.form)
-    id = request.form['team_id']
-    return redirect(f'/games/view/{id}')
-
-@app.route('/game/update2', methods=['POST'])
-def game_update2():
     if not 'user_id' in session:
         return redirect('/')
     if not Game.validate(request.form):
