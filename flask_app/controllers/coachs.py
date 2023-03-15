@@ -52,7 +52,7 @@ def login_coach():
         return redirect("/login")
     if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
         flash("Invalid Email/Password")
-        return redirect('/')
+        return redirect('/login')
     session['user_id'] = user_in_db.id
     return redirect('/coach/dashboard')
 
