@@ -103,33 +103,11 @@ class Game:
             "team_id" : data['team_id'],
             "id" : data['id']
         }
+        print(previous_win_loss)
         if previous_win_loss == win_loss:
             query = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;" 
             return connectToMySQL(db).query_db(query, query_data)
-        elif previous_win_loss != win_loss:
-            if int(data['our_runs']) > int(data['their_runs']):
-                team_wins = int(data['team_wins']) + 1
-                team_losses = int(data['team_losses']) - 1
-                query_data_WLT = {
-                "wins" : team_wins,
-                "losses" : team_losses,
-                "team_id" : data['team_id']
-                }
-                query = "UPDATE teams SET wins = %(wins)s, losses = %(losses)s WHERE id = %(team_id)s;"
-                query2 = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;"  
-                return connectToMySQL(db).query_db(query, query_data_WLT), connectToMySQL(db).query_db(query2, query_data)
-            elif int(data['our_runs']) < int(data['their_runs']):
-                team_losses = int(data['team_losses']) + 1
-                team_wins = int(data['team_wins']) - 1
-                query_data_WLT = {
-                    "wins" : team_wins,
-                    "losses" : team_losses,
-                    "team_id" : data['team_id']
-                }
-                query = "UPDATE teams SET wins = %(wins)s, losses = %(losses)s WHERE id = %(team_id)s;" 
-                query2 = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;"  
-                return connectToMySQL(db).query_db(query, query_data_WLT), connectToMySQL(db).query_db(query2, query_data)
-        elif previous_win_loss != "W" or "L" or "T":
+        elif previous_win_loss == '0':
             if int(data['our_runs']) > int(data['their_runs']):
                 team_wins = int(data['team_wins']) + 1
                 query_data_WLT = {
@@ -169,24 +147,5 @@ class Game:
                     "team_id" : data['team_id']
                 }
                 query = "UPDATE teams SET wins = %(wins)s, losses = %(losses)s WHERE id = %(team_id)s;" 
-                query2 = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;"  
-                return connectToMySQL(db).query_db(query, query_data_WLT), connectToMySQL(db).query_db(query2, query_data)
-        else:
-            if int(data['our_runs']) > int(data['their_runs']):
-                team_wins = int(data['team_wins']) + 1
-                query_data_WLT = {
-                "wins" : team_wins,
-                "team_id" : data['team_id']
-                }
-                query = "UPDATE teams SET wins = %(wins)s WHERE id = %(team_id)s;"
-                query2 = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;"  
-                return connectToMySQL(db).query_db(query, query_data_WLT), connectToMySQL(db).query_db(query2, query_data)
-            elif int(data['our_runs']) < int(data['their_runs']):
-                team_losses = int(data['team_losses']) + 1
-                query_data_WLT = {
-                    "losses" : team_losses,
-                    "team_id" : data['team_id']
-                }
-                query = "UPDATE teams SET losses = %(losses)s WHERE id = %(team_id)s;" 
                 query2 = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;"  
                 return connectToMySQL(db).query_db(query, query_data_WLT), connectToMySQL(db).query_db(query2, query_data)
