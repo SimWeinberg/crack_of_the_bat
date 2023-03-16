@@ -125,9 +125,8 @@ class Team:
     
     @classmethod
     def get_team_and_parents(cls, data):
-        query = "SELECT * FROM teams LEFT JOIN teams_has_parents ON teams.id = teams_has_parents.team_id JOIN parents ON parents.id = teams_has_parents.parent_id WHERE teams_has_parents.team_id = %(id)s;"
+        query = "SELECT * FROM teams LEFT JOIN teams_has_parents ON teams.id = teams_has_parents.team_id LEFT JOIN parents ON parents.id = teams_has_parents.parent_id WHERE teams.id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
-        print(results)
         team = cls(results[0])
         for row in results:
             if row['parents.id'] == None:
