@@ -21,7 +21,6 @@ class Parent:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.team_id = data['team_id']
         self.teams = []
 
     @staticmethod
@@ -45,3 +44,14 @@ class Parent:
         query = "INSERT INTO parents (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
         query2 = "INSERT INTO teams_has_parents (parent_id, team_id) SELECT (SELECT MAX(id) FROM parents), %(team_id)s;"
         return connectToMySQL(db).query_db(query, data), connectToMySQL(db).query_db(query2, data)
+    
+    @classmethod
+    def get_one(cls, data):
+        query  = "SELECT * FROM parents WHERE id = %(id)s;"
+        results = connectToMySQL(db).query_db(query, data)
+        return cls(results[0]) 
+    
+    @classmethod
+    def update(cls, data):
+        query = "UPDATE parents SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)
