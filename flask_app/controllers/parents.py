@@ -40,8 +40,8 @@ def parent_create():
     id = request.form['team_id']
     return redirect(f'/parents/view/{id}')
 
-@app.route('/parent/edit/<int:id>')
-def parent_edit(id):
+@app.route('/parent/edit/<int:id>/<int:team_id>')
+def parent_edit(id, team_id):
     if not 'user_id' in session:
         return redirect('/')
     parent_id = {
@@ -50,7 +50,7 @@ def parent_edit(id):
     coach_id = {
         "id" : session['user_id']
     }
-    return render_template('parent_edit.html', parent = Parent.get_one(parent_id), coach = Coach.get_coach(coach_id))
+    return render_template('parent_edit.html', parent = Parent.get_one(parent_id), coach = Coach.get_coach(coach_id), team = team_id)
 
 @app.route('/parent/update', methods=['POST'])
 def parent_update():
