@@ -62,3 +62,11 @@ def parent_update():
     Parent.update(request.form)
     id = request.form['team_id']
     return redirect(f'/parents/view/{id}')
+
+@app.route('/parent/delete/<int:id>/<int:team_id>')
+def delete_parent(id, team_id):
+    data = {
+        "id" : id
+    }
+    Parent.delete(data)
+    return redirect(f'/parents/view/{team_id}')

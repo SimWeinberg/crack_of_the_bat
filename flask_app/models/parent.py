@@ -55,3 +55,8 @@ class Parent:
     def update(cls, data):
         query = "UPDATE parents SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s WHERE id = %(id)s;"
         return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM parents WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)
