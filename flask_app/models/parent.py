@@ -58,5 +58,6 @@ class Parent:
     
     @classmethod
     def delete(cls, data):
-        query = "DELETE FROM parents WHERE id = %(id)s;"
-        return connectToMySQL(db).query_db(query, data)
+        query = "DELETE FROM teams_has_parents WHERE parent_id = %(id)s;"
+        query2 = "DELETE FROM parents WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data), connectToMySQL(db).query_db(query2, data)
