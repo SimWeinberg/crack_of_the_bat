@@ -90,8 +90,6 @@ class Game:
             win_loss = "W"
         elif int(data['our_runs']) < int(data['their_runs']):
             win_loss = "L"
-        # elif int(data['our_runs']) == int(data['their_runs']):
-        #     win_loss = "T"
         query_data = {
             "vs" : data['vs'],
             "home_or_away" : data['home_or_away'],
