@@ -90,8 +90,8 @@ class Game:
             win_loss = "W"
         elif int(data['our_runs']) < int(data['their_runs']):
             win_loss = "L"
-        elif int(data['our_runs']) == int(data['their_runs']):
-            win_loss = "T"
+        # elif int(data['our_runs']) == int(data['their_runs']):
+        #     win_loss = "T"
         query_data = {
             "vs" : data['vs'],
             "home_or_away" : data['home_or_away'],
@@ -103,7 +103,6 @@ class Game:
             "team_id" : data['team_id'],
             "id" : data['id']
         }
-        print(previous_win_loss)
         if previous_win_loss == win_loss:
             query = "UPDATE games SET vs = %(vs)s, home_or_away = %(home_or_away)s, date = %(date)s, time = %(time)s, our_runs = %(our_runs)s, their_runs = %(their_runs)s, win_loss = %(win_loss)s, team_id = %(team_id)s WHERE id = %(id)s;" 
             return connectToMySQL(db).query_db(query, query_data)
