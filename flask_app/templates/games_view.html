@@ -80,7 +80,7 @@
                             {% else %}
                                 <td class="fw-bold">{{game.win_loss}}</td>
                             {% endif %}
-                            <td class="fw-bold"><a href="/game/edit/{{game.id}}/{{team.id}}/{{game.win_loss}}">edit</a></td>
+                            <td class="fw-bold"><a href="/game/edit/{{game.id}}/{{team.id}}">edit</a></td>
                             <td class="fw-bold"><a href="/game/delete/{{game.id}}/{{team.id}}/{{team.wins}}/{{team.losses}}/{{game.win_loss}}">delete</a></td>
                         </tr>
                     {% endfor %}

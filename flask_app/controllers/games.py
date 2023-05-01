@@ -40,8 +40,8 @@ def game_create():
     id = request.form['team_id']
     return redirect(f'/games/view/{id}')
 
-@app.route('/game/edit/<int:id>/<int:team_id>/<win_loss>')
-def game_edit(id, team_id, win_loss):
+@app.route('/game/edit/<int:id>/<int:team_id>')
+def game_edit(id, team_id):
     if not 'user_id' in session:
         return redirect('/')
     game_id = {
