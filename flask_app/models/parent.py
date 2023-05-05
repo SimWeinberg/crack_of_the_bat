@@ -6,11 +6,13 @@ from flask import flash, request
 
 import re
 
+import os
+
 REGEX = re.compile(r'^[a-zA-z]+$')
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
-db = ''
+db = os.getenv("db_name")
 
 class Parent:
     def __init__(self, data):

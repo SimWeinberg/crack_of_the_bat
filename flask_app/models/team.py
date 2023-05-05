@@ -6,6 +6,8 @@ from flask import flash, session
 
 import re
 
+import os
+
 REGEX = re.compile(r'^[a-zA-z][a-zA-z\s]+$')
 
 REGEX_YEAR = re.compile(r'^[2-9][0-9]+$')
@@ -16,7 +18,7 @@ from flask_app.models import game
 
 from flask_app.models import parent
 
-db = ''
+db = os.getenv("db_name")
 
 class Team:
     def __init__(self, data):

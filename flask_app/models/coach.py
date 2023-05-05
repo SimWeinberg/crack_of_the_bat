@@ -6,13 +6,15 @@ from flask import flash
 
 import re
 
+import os
+
 REGEX = re.compile(r'^[a-zA-z]+$')
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 from flask_app.models import team
 
-db = ''
+db = os.getenv("db_name")
 
 class Coach:
     def __init__(self, data):

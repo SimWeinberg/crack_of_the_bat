@@ -6,9 +6,11 @@ from flask import flash, request
 
 import re
 
+import os
+
 REGEX = re.compile(r'^[a-zA-z][a-zA-z\s]+$')
 
-db = ''
+db = os.getenv("db_name")
 
 class Game:
     def __init__(self, data):
