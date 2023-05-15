@@ -8,6 +8,37 @@ from flask_app.models.coach import Coach
 
 from flask_app.models.team import Team
 
+from flask_bcrypt import Bcrypt        
+bcrypt = Bcrypt(app)
+
+@app.route('/register/parent', methods=['POST'])
+def register_parent():
+    if not Parent.validate_registration(request.form):
+        return redirect('/register')
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    data = {
+        "first_name" : request.form['first_name'],
+        "last_name" : request.form['last_name'],
+        "password" : pw_hash
+    }
+    Parent.register(data)
+    data2 = { 
+        "email" : request.form['email'] 
+    }
+    user_in_db = Parent.get_by_email(data2)
+    print(user_in_db)
+    session['user_id'] = user_in_db.id
+    return redirect('/parent/dashboard') 
+
+@app.route('/parent/dashboard')
+def parent_dashboard():
+    if not 'user_id' in session:
+        return redirect('/')
+    data = {
+        "id" : session['user_id']
+    }
+    return render_template('parent_dashboard.html', parent_and_teams = Parent.get_parent_and_teams(data))
+
 @app.route('/parents/view/<int:id>')
 def parents_view(id):
     if not 'user_id' in session:
