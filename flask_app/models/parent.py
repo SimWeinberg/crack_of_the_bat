@@ -97,11 +97,6 @@ class Parent:
         return connectToMySQL(db).query_db(query, data), connectToMySQL(db).query_db(query2, data)
     
     @classmethod
-    def register(cls, data):
-        query = "UPDATE parents SET first_name = %(first_name)s, last_name = %(last_name)s, password = %(password)s WHERE id = %(id)s;"
-        return connectToMySQL(db).query_db(query, data)
-    
-    @classmethod
     def get_parent_and_teams(cls, data):
         query = "SELECT * FROM parents LEFT JOIN teams_has_parents ON parents.id = teams_has_parents.parent_id LEFT JOIN teams ON teams.id = teams_has_parents.team_id WHERE parents.id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
@@ -116,6 +111,7 @@ class Parent:
                 "created_at" : row['teams.created_at'],
                 "updated_at" : row['teams.updated_at'],
                 "parent_id" : row['parent_id'],
+                "coach_id" : row['coach_id'],
             }
             parent.teams.append(team.Team(team_data))
         return parent
@@ -124,6 +120,9 @@ class Parent:
     def get_by_email(cls, data):
         query = "SELECT * FROM parents WHERE email = %(email)s;"
         result = connectToMySQL(db).query_db(query, data)
-        if len(result) < 1:
-            return False
         return cls(result[0])
+    
+    @classmethod
+    def save_password(cls, data):
+        query = "UPDATE parents SET password = %(password)s WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)

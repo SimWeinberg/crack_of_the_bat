@@ -15,19 +15,18 @@ bcrypt = Bcrypt(app)
 def register_parent():
     if not Parent.validate_registration(request.form):
         return redirect('/register')
-    pw_hash = bcrypt.generate_password_hash(request.form['password'])
-    data = {
-        "first_name" : request.form['first_name'],
-        "last_name" : request.form['last_name'],
-        "password" : pw_hash
-    }
-    Parent.register(data)
-    data2 = { 
+    data = { 
         "email" : request.form['email'] 
     }
-    user_in_db = Parent.get_by_email(data2)
-    print(user_in_db)
+    user_in_db = Parent.get_by_email(data)
     session['user_id'] = user_in_db.id
+    id = user_in_db.id
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    data2 = {
+        "password" : pw_hash,
+        "id" : id
+    }
+    Parent.save_password(data2)
     return redirect('/parent/dashboard') 
 
 @app.route('/parent/dashboard')
