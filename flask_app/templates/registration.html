@@ -52,23 +52,6 @@
                     <input type="submit" class="btn btn-primary" value="Register">
                 </form>
             </div>
-            <div class="col-2 bg-dark text-light m-4 p-4">
-                <h3>Parent's Registration</h3>
-                <form action="/register/parent" method="post">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" class="form-control" name="first_name">
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name">
-                    <label for="email">Email:</label>
-                    <input type="text" class="form-control" name="email">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" name="password">
-                    <label for="confirm_password">Confirm Password:</label>
-                    <input type="password" class="form-control" name="confirm_password">
-                    <br>
-                    <input type="submit" class="btn btn-primary" value="Register">
-                </form>
-            </div>
         </div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}

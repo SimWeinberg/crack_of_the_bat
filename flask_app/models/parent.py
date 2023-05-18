@@ -28,36 +28,6 @@ class Parent:
         self.teams = []
 
     @staticmethod
-    def validate_registration(parent):
-        is_valid = True
-        parent_name = [parent['first_name'], parent['last_name']]
-        for i in parent_name:
-            if not (len(i) >= 1 and len(i) <= 15):
-                flash("Name must be 1-15 letters")
-                is_valid = False
-            if not REGEX.match(i): 
-                flash("Name is letters only")
-                is_valid = False
-        query = "SELECT * FROM parents WHERE email = %(email)s;"
-        results = connectToMySQL(db).query_db(query, parent)
-        if len(results) < 1:
-            flash("Email not found")
-            is_valid = False
-        if not EMAIL_REGEX.match(parent['email']): 
-            flash("Invalid email address")
-            is_valid = False
-        if not (len(parent['password']) >= 8 and len(parent['password']) <= 15):
-            flash("Password must be 8-15 characters")
-            is_valid = False
-        pword = parent['password']
-        pwordc = parent['confirm_password']
-        if not pword == pwordc:
-            is_valid = False
-            flash("Password does not match password confirmation")
-            is_valid = False
-        return is_valid
-
-    @staticmethod
     def validate(parent):
         is_valid = True
         parent_name = [parent['first_name'], parent['last_name']]
@@ -120,9 +90,11 @@ class Parent:
     def get_by_email(cls, data):
         query = "SELECT * FROM parents WHERE email = %(email)s;"
         result = connectToMySQL(db).query_db(query, data)
+        if len(result) < 1:
+            return False
         return cls(result[0])
     
-    @classmethod
-    def save_password(cls, data):
-        query = "UPDATE parents SET password = %(password)s WHERE id = %(id)s;"
-        return connectToMySQL(db).query_db(query, data)
+    # @classmethod
+    # def save_password(cls, data):
+    #     query = "UPDATE parents SET password = %(password)s WHERE id = %(id)s;"
+    #     return connectToMySQL(db).query_db(query, data)

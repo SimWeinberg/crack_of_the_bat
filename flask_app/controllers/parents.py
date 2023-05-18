@@ -11,23 +11,31 @@ from flask_app.models.team import Team
 from flask_bcrypt import Bcrypt        
 bcrypt = Bcrypt(app)
 
-@app.route('/register/parent', methods=['POST'])
-def register_parent():
-    if not Parent.validate_registration(request.form):
-        return redirect('/register')
+@app.route('/parent/login', methods=['POST'])
+def parent_login():
     data = { 
         "email" : request.form['email'] 
     }
     user_in_db = Parent.get_by_email(data)
+    if not user_in_db:
+        flash("Invalid Email/Password")
+        return redirect("/login")
+    if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
+        flash("Invalid Email/Password")
+        return redirect('/login')
     session['user_id'] = user_in_db.id
-    id = user_in_db.id
-    pw_hash = bcrypt.generate_password_hash(request.form['password'])
-    data2 = {
-        "password" : pw_hash,
-        "id" : id
-    }
-    Parent.save_password(data2)
-    return redirect('/parent/dashboard') 
+    if user_in_db.force_reset == True:
+        return redirect('/parent/reset_password')
+    return redirect('/parent/dashboard')
+
+    # id = user_in_db.id
+    # pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    # data2 = {
+    #     "password" : pw_hash,
+    #     "id" : id
+    # }
+    # Parent.save_password(data2)
+    # return redirect('/parent/dashboard') 
 
 @app.route('/parent/dashboard')
 def parent_dashboard():
