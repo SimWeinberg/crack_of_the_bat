@@ -23,6 +23,7 @@ class Parent:
         self.last_name = data['last_name']
         self.email = data['email']
         self.password = data['password']
+        self.force_reset = data['force_reset']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.teams = []
@@ -36,16 +37,24 @@ class Parent:
                 flash("Name must be 1-15 letters")
                 is_valid = False
             if not REGEX.match(i): 
-                flash("Name is letters only")
+                flash("Name must be letters")
                 is_valid = False
         if not EMAIL_REGEX.match(parent['email']): 
             flash("Invalid email address")
             is_valid = False
+        if not (len(parent['password']) >= 8 and len(parent['password']) <= 15):
+            flash("Password must be 8-15 characters")
+            is_valid = False
+        pword = parent['password']
+        pwordc = parent['confirm_password']
+        if not pword == pwordc:
+            is_valid = False
+            flash("Password does not match password confirmation")
         return is_valid
     
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO parents (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s);"
+        query = "INSERT INTO parents (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
         query2 = "INSERT INTO teams_has_parents (parent_id, team_id) SELECT (SELECT MAX(id) FROM parents), %(team_id)s;"
         return connectToMySQL(db).query_db(query, data), connectToMySQL(db).query_db(query2, data)
     

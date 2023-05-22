@@ -74,7 +74,15 @@ def parent_create():
     if not Parent.validate(request.form):
         id = request.form['team_id']
         return redirect(f'/parent/add/{id}')
-    Parent.save(request.form)
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    data = {
+        "first_name" : request.form['first_name'],
+        "last_name" : request.form['last_name'],
+        "email" : request.form['email'],
+        "password" : pw_hash,
+        "team_id" : request.form['team_id']
+    }
+    Parent.save(data)
     id = request.form['team_id']
     return redirect(f'/parents/view/{id}')
 
