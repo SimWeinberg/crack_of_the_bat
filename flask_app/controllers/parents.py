@@ -28,14 +28,14 @@ def parent_login():
         return redirect('/parent/reset_password')
     return redirect('/parent/dashboard')
 
-    # id = user_in_db.id
-    # pw_hash = bcrypt.generate_password_hash(request.form['password'])
-    # data2 = {
-    #     "password" : pw_hash,
-    #     "id" : id
+@app.route('/parent/reset_password')
+def parent_reset_password():
+    if not 'user_id' in session:
+        return redirect('/')
+    # data = {
+    #     "id" : session['user_id']
     # }
-    # Parent.save_password(data2)
-    # return redirect('/parent/dashboard') 
+    return render_template('parent_reset_password.html')
 
 @app.route('/parent/dashboard')
 def parent_dashboard():
