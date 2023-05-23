@@ -25,17 +25,31 @@ def parent_login():
         return redirect('/login')
     session['user_id'] = user_in_db.id
     if user_in_db.force_reset == True:
-        return redirect('/parent/reset_password')
+        return redirect('/parent/reset')
     return redirect('/parent/dashboard')
 
-@app.route('/parent/reset_password')
+@app.route('/parent/reset')
+def parent_reset():
+    if not 'user_id' in session:
+        return redirect('/')
+    data = {
+        "id" : session['user_id']
+    }
+    return render_template('parent_reset_password.html', parent = Parent.get_one(data))
+
+@app.route('/parent/reset_password', methods=['POST'])
 def parent_reset_password():
     if not 'user_id' in session:
         return redirect('/')
-    # data = {
-    #     "id" : session['user_id']
-    # }
-    return render_template('parent_reset_password.html')
+    if not Parent.validate_reset(request.form):
+        return redirect('/parent/reset')
+    pw_hash = bcrypt.generate_password_hash(request.form['password'])
+    data = {
+        "password" : pw_hash,
+        "id" : request.form['id']
+    }
+    Parent.reset_password(data)
+    return redirect('/parent/dashboard')
 
 @app.route('/parent/dashboard')
 def parent_dashboard():

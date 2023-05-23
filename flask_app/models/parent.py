@@ -52,6 +52,19 @@ class Parent:
             flash("Password does not match password confirmation")
         return is_valid
     
+    @staticmethod
+    def validate_reset(parent):
+        is_valid = True
+        if not (len(parent['password']) >= 8 and len(parent['password']) <= 15):
+            flash("Password must be 8-15 characters")
+            is_valid = False
+        pword = parent['password']
+        pwordc = parent['confirm_password']
+        if not pword == pwordc:
+            is_valid = False
+            flash("Password does not match password confirmation")
+        return is_valid
+    
     @classmethod
     def save(cls, data):
         query = "INSERT INTO parents (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
@@ -103,7 +116,7 @@ class Parent:
             return False
         return cls(result[0])
     
-    # @classmethod
-    # def save_password(cls, data):
-    #     query = "UPDATE parents SET password = %(password)s WHERE id = %(id)s;"
-    #     return connectToMySQL(db).query_db(query, data)
+    @classmethod
+    def reset_password(cls, data):
+        query = "UPDATE parents SET password = %(password)s, force_reset = 0 WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)

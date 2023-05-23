@@ -139,6 +139,7 @@ class Team:
                 "last_name" : row['last_name'],
                 "email" : row['email'],
                 "password" : row['password'],
+                "force_reset" : row['force_reset'],
                 "created_at" : row['created_at'],
                 "updated_at" : row['updated_at'],
                 "team_id" : row['team_id'],
