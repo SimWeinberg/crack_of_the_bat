@@ -18,28 +18,34 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
+                        {% if not parent %}
                         <li class="nav-item">
                             <a class="nav-link" href="/coach/dashboard">Dashboard</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="/games/view/{{team.id}}">Schedule</a>
                         </li>
+                        {% if not parent %}
                         <li class="nav-item">
                             <a class="nav-link" href="/player/add/{{team.id}}">Add Player</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/parents/view/{{team.id}}">Parents</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
+                    {% if not parent %}
                     <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
                     <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
                         {% if coach.image_path != None %}
                             <img class="profile_image" src="{{coach.image_path}}" alt="profile image">   
                         {% endif %}
                     </a>
+                    {% endif %}
                 </div>  
             </div>
         </nav>
@@ -58,14 +64,17 @@
                         <th scope="col" class="fs-5 text-white">OBP</th>
                         <th scope="col" class="fs-5 text-white">SLG</th>
                         <th scope="col" class="fs-5 text-white">ERA</th>
+                        {% if not parent %}
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
                     {% for player in team.players %}   
                         <tr>
+                            {% if not parent %}
                             <td id="player_profile_pic_padding">
                                 <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
                                     {% if player.image_path != None %}
@@ -73,6 +82,11 @@
                                     {% endif %}
                                 </a>
                             </td>
+                            {% elif parent %}
+                            <td id="player_profile_pic_padding">
+                                <div class="profile_div"></div>
+                            </td>
+                            {% endif %}
                             <td class="fw-bold">{{player.first_name}}</td>
                             <td class="fw-bold">{{player.last_name}}</td>
                             <td class="fw-bold">{{player.position}}</td>
@@ -96,9 +110,11 @@
                             {% else %}
                                 <td class="fw-bold">{{player.era}}</td>
                             {% endif %}
+                            {% if not parent %}
                             <td class="fw-bold"><a href="/player/edit/{{player.id}}">edit player</a></td>
                             <td class="fw-bold"><a href="/player/edit/stats/{{player.id}}">edit stats</a></td>
                             <td class="fw-bold"><a href="/player/delete/{{player.id}}/{{team.id}}">delete</a></td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </tbody>
