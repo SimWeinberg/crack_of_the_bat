@@ -60,6 +60,18 @@ def parent_dashboard():
     }
     return render_template('parent_dashboard.html', parent_and_teams = Parent.get_parent_and_teams(data))
 
+@app.route('/parent/team/view/<int:id>')
+def parent_team_view(id):
+    if not 'user_id' in session:
+        return redirect('/')
+    team_id = {
+        "id" : id
+    }
+    parent_id = {
+        "id" : session['user_id']
+    }
+    return render_template('team_view.html', team = Team.get_team_and_players(team_id), parent = Parent.get_one(parent_id))
+
 @app.route('/parents/view/<int:id>')
 def parents_view(id):
     if not 'user_id' in session:
