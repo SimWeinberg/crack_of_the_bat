@@ -18,25 +18,42 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/coach/dashboard">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/game/add/{{team.id}}">Add Game</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/team/view/{{team.id}}">Team View</a>
-                        </li>
+                        {% if not parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/coach/dashboard">Dashboard</a>
+                            </li>
+                        {% elif parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/parent/dashboard">Dashboard</a>
+                            </li>
+                        {% endif %}
+                        {% if not parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/game/add/{{team.id}}">Add Game</a>
+                            </li>
+                        {% endif %}
+                        {% if not parent %}   
+                            <li class="nav-item">
+                                <a class="nav-link" href="/team/view/{{team.id}}">Team View</a>
+                            </li>
+                        {% elif parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/parent/team/view/{{team.id}}">Team View</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
-                    <!-- {% if not parent %} -->
-                    <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
-                    {% if coach.image_path != None %}
-                        <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
-                    {% else %}
-                        <div class="profile_div"></div>   
+                    {% if not parent %}
+                        <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
+                        {% if coach.image_path != None %}
+                            <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                        {% else %}
+                            <div class="profile_div"></div>   
+                        {% endif %}
+                    {% elif parent %}
+                        <span class="navbar-text me-2">Hello {{parent.first_name}}</span>
                     {% endif %}
                 </div>  
             </div>
@@ -55,8 +72,10 @@
                         <th scope="col" class="fs-5 text-white">Our Runs</th>
                         <th scope="col" class="fs-5 text-white">Their Runs</th>
                         <th scope="col" class="fs-5 text-white">W/L</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        {% if not parent %}
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -81,8 +100,10 @@
                             {% else %}
                                 <td class="fw-bold">{{game.win_loss}}</td>
                             {% endif %}
-                            <td class="fw-bold"><a href="/game/edit/{{game.id}}/{{team.id}}">edit</a></td>
-                            <td class="fw-bold"><a href="/game/delete/{{game.id}}/{{team.id}}/{{team.wins}}/{{team.losses}}/{{game.win_loss}}">delete</a></td>
+                            {% if not parent %}
+                                <td class="fw-bold"><a href="/game/edit/{{game.id}}/{{team.id}}">edit</a></td>
+                                <td class="fw-bold"><a href="/game/delete/{{game.id}}/{{team.id}}/{{team.wins}}/{{team.losses}}/{{game.win_loss}}">delete</a></td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </tbody>
