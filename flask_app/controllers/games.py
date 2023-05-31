@@ -8,6 +8,8 @@ from flask_app.models.coach import Coach
 
 from flask_app.models.game import Game
 
+from flask_app.models.parent import Parent
+
 @app.route('/games/view/<int:id>')
 def games_view(id):
     if not 'user_id' in session:
@@ -19,6 +21,18 @@ def games_view(id):
         "id" : session['user_id']
     }
     return render_template('games_view.html', team = Team.get_team_and_games(team_id), coach = Coach.get_coach(coach_id))
+
+@app.route('/games/view/parent/<int:id>')
+def games_view_parent(id):
+    if not 'user_id' in session:
+        return redirect('/')
+    team_id = {
+        "id" : id
+    }
+    parent_id = {
+        "id" : session['user_id']
+    }
+    return render_template('games_view.html', team = Team.get_team_and_games(team_id), parent = Parent.get_parent(parent_id))
 
 @app.route('/game/add/<int:id>')
 def game_add(id):

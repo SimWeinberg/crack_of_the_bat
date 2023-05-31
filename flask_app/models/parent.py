@@ -120,3 +120,9 @@ class Parent:
     def reset_password(cls, data):
         query = "UPDATE parents SET password = %(password)s, force_reset = 0 WHERE id = %(id)s;"
         return connectToMySQL(db).query_db(query, data)
+    
+    @classmethod
+    def get_parent(cls, data):
+        query = "SELECT * FROM parents WHERE id = %(id)s;"
+        result = connectToMySQL(db).query_db(query, data)
+        return cls(result[0])
