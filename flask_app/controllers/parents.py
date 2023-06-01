@@ -108,7 +108,15 @@ def parent_create():
         "password" : pw_hash,
         "team_id" : request.form['team_id']
     }
-    Parent.save(data)
+    email = {
+        "email" : request.form['email']
+    }
+    user_in_db = Parent.get_by_email(email)
+    if not user_in_db:
+        Parent.save(data)
+        id = request.form['team_id']
+        return redirect(f'/parents/view/{id}')
+    print("hello")
     id = request.form['team_id']
     return redirect(f'/parents/view/{id}')
 
