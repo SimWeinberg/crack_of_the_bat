@@ -101,24 +101,33 @@ def parent_create():
         id = request.form['team_id']
         return redirect(f'/parent/add/{id}')
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
-    data = {
+    email = {
+        "email" : request.form['email']
+    }
+    user_in_db = Parent.get_by_email(email)
+    if not user_in_db:
+        data = {
         "first_name" : request.form['first_name'],
         "last_name" : request.form['last_name'],
         "email" : request.form['email'],
         "password" : pw_hash,
         "team_id" : request.form['team_id']
     }
-    email = {
-        "email" : request.form['email']
-    }
-    user_in_db = Parent.get_by_email(email)
-    if not user_in_db:
         Parent.save(data)
         id = request.form['team_id']
         return redirect(f'/parents/view/{id}')
-    print("hello")
-    id = request.form['team_id']
-    return redirect(f'/parents/view/{id}')
+    elif user_in_db:
+        data = {
+            "first_name" : request.form['first_name'],
+            "last_name" : request.form['last_name'],
+            "email" : request.form['email'],
+            "password" : pw_hash,
+            "team_id" : request.form['team_id'],
+            "parent_id" : user_in_db.id
+        }
+        Parent.add_team(data)
+        team_id = request.form['team_id']
+        return redirect(f'/parents/view/{team_id}')
 
 @app.route('/parent/edit/<int:id>/<int:team_id>')
 def parent_edit(id, team_id):

@@ -72,6 +72,12 @@ class Parent:
         return connectToMySQL(db).query_db(query, data), connectToMySQL(db).query_db(query2, data)
     
     @classmethod
+    def add_team(cls, data):
+        query = "UPDATE parents SET password = %(password)s, force_reset = 1 WHERE id = %(parent_id)s;"
+        query2 = "INSERT INTO teams_has_parents (parent_id, team_id) VALUES (%(parent_id)s, %(team_id)s);"
+        return connectToMySQL(db).query_db(query, data), connectToMySQL(db).query_db(query2, data)
+    
+    @classmethod
     def get_one(cls, data):
         query  = "SELECT * FROM parents WHERE id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
