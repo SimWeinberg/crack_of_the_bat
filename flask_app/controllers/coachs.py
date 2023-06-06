@@ -19,8 +19,8 @@ def home():
     return render_template('home.html')
 
 @app.route('/register')
-def registration():
-    return render_template('registration.html')
+def register():
+    return render_template('register.html')
 
 @app.route('/login')
 def login():
