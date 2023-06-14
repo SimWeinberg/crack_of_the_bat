@@ -114,7 +114,7 @@ def parent_create():
 		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
 			"to": parent_email,
 			"subject": "Welcome to Crack of The Bat!",
-			"text": "Congratulations Sim Weinberg, you just sent an email with Mailgun!  You are truly awesome!"})
+			"text": f"Congratulations {first_name}, you have been added as a parent to team_here year_here!  Please login and reset your password.  Current password is {password}."})
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     email = {
         "email" : request.form['email']
