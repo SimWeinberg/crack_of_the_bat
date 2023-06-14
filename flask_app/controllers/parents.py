@@ -1,6 +1,6 @@
 from flask_app import app
 
-from flask import Flask, render_template, request, redirect, session, flash 
+from flask import Flask, render_template, request, redirect, session, flash
 
 from flask_app.models.parent import Parent
 
@@ -10,6 +10,10 @@ from flask_app.models.team import Team
 
 from flask_bcrypt import Bcrypt        
 bcrypt = Bcrypt(app)
+
+import requests
+
+import os
 
 @app.route('/parent/login', methods=['POST'])
 def parent_login():
@@ -100,6 +104,17 @@ def parent_create():
     if not Parent.validate(request.form):
         id = request.form['team_id']
         return redirect(f'/parent/add/{id}')
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    parent_email = request.form['email']
+    password = request.form['password']
+    requests.post(
+		"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
+		auth=("api", os.getenv("api_key")),
+		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
+			"to": parent_email,
+			"subject": "Welcome to Crack of The Bat!",
+			"text": "Congratulations Sim Weinberg, you just sent an email with Mailgun!  You are truly awesome!"})
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     email = {
         "email" : request.form['email']
