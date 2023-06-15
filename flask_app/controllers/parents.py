@@ -105,23 +105,8 @@ def parent_create():
         id = request.form['team_id']
         return redirect(f'/parent/add/{id}')
     first_name = request.form['first_name']
-    last_name = request.form['last_name']
     parent_email = request.form['email']
     password = request.form['password']
-    # requests.post(
-	# 	"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
-	# 	auth=("api", os.getenv("api_key")),
-	# 	data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
-	# 		"to": parent_email,
-	# 		"subject": "Welcome to Crack of The Bat!",
-	# 		"text": f"Congratulations {first_name}, you have been added as a parent to team_here year_here!  Please login and reset your password.  Current password is {password}."})
-    requests.post(
-		"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
-		auth=("api", os.getenv("api_key")),
-		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
-			"to": parent_email,
-			"subject": "Welcome to Crack of The Bat!",
-			"template": "parent_add"})
     pw_hash = bcrypt.generate_password_hash(request.form['password'])
     email = {
         "email" : request.form['email']
@@ -136,6 +121,15 @@ def parent_create():
         "team_id" : request.form['team_id']
     }
         Parent.save(data)
+        requests.post(
+		"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
+		auth=("api", os.getenv("api_key")),
+		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
+			"to": parent_email,
+			"subject": "Welcome to Crack of The Bat!",
+			"template": "parent_add",
+            "v:password": password,
+            "v:first_name": first_name})
         id = request.form['team_id']
         return redirect(f'/parents/view/{id}')
     elif user_in_db:
@@ -148,6 +142,15 @@ def parent_create():
             "parent_id" : user_in_db.id
         }
         Parent.add_team(data)
+        requests.post(
+		"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
+		auth=("api", os.getenv("api_key")),
+		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
+			"to": parent_email,
+			"subject": "Welcome to Crack of The Bat!",
+			"template": "parent_add",
+            "v:password": password,
+            "v:first_name": first_name})
         team_id = request.form['team_id']
         return redirect(f'/parents/view/{team_id}')
 
