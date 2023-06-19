@@ -10,6 +10,10 @@ from flask_app.models.game import Game
 
 from flask_app.models.parent import Parent
 
+import requests
+
+import os
+
 @app.route('/games/view/<int:id>')
 def games_view(id):
     if not 'user_id' in session:
@@ -51,6 +55,19 @@ def game_create():
         id = request.form['team_id']
         return redirect(f'/game/add/{id}')
     Game.save(request.form)
+    team_id = {
+        "id" : request.form['team_id']
+    }
+    team = Team.get_team_and_parents(team_id)
+    for parent in team.parents:
+        requests.post(
+		"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
+		auth=("api", os.getenv("api_key")),
+		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
+			"to": parent.email,
+			"subject": "Team Schedule Change",
+			"template": "schedule_change",
+            "v:first_name": parent.first_name})
     id = request.form['team_id']
     return redirect(f'/games/view/{id}')
 
