@@ -124,4 +124,17 @@ def delete_game(id, team_id, wins, losses, win_loss):
         Game.delete_update_losses(game_id, losses)
         return redirect(f'/games/view/{team_id}')
     Game.delete(game_id)
+    id = {
+        "id" : team_id
+    }
+    team = Team.get_team_and_parents(id)
+    for parent in team.parents:
+        requests.post(
+		"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
+		auth=("api", os.getenv("api_key")),
+		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
+			"to": parent.email,
+			"subject": "Team Schedule Change",
+			"template": "schedule_change",
+            "v:first_name": parent.first_name})
     return redirect(f'/games/view/{team_id}')
