@@ -96,6 +96,19 @@ def game_update():
             win_loss = request.form['win_loss']
             return redirect(f'/game/edit/{id}/{team_id}/{win_loss}')
     Game.update(request.form)
+    team_id = {
+        "id" : request.form['team_id']
+    }
+    team = Team.get_team_and_parents(team_id)
+    for parent in team.parents:
+        requests.post(
+		"https://api.mailgun.net/v3/sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org/messages",
+		auth=("api", os.getenv("api_key")),
+		data={"from": "Mailgun Sandbox <postmaster@sandbox0b439f2fb6364e88a24fba49512319f8.mailgun.org>",
+			"to": parent.email,
+			"subject": "Team Schedule Change",
+			"template": "schedule_change",
+            "v:first_name": parent.first_name})
     id = request.form['team_id']
     return redirect(f'/games/view/{id}')
 
