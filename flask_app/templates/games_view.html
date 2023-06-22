@@ -28,13 +28,13 @@
                             </li>
                         {% endif %}
                         {% if not parent %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="/game/add/{{team.id}}">Add Game</a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/team/view/{{team.id}}">Team View</a>
+                        </li>
                         {% endif %}
                         {% if not parent %}   
                             <li class="nav-item">
-                                <a class="nav-link" href="/team/view/{{team.id}}">Team View</a>
+                                <a class="nav-link" href="/game/add/{{team.id}}">Add Game</a>
                             </li>
                         {% elif parent %}
                             <li class="nav-item">
