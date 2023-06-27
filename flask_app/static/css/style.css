@@ -1,63 +1,109 @@
 .container_main {
-    height: 1080px;
-    background-image: url('/static/images/little_league_field_1920x1080_ps_final_2.png');
+    /* height: 1080px;
+    background-image: url('/static/images/little_league_field_1920x1080_ps_final_2.png'); */
     padding: 0px;
 }
 
-.profile_div {
-    display: block; 
-    width: 30px; 
-    height: 30px; 
-    border-radius: 50px; 
-    background-image: url('/static/images/user_circle_30px.png')
+@media screen and (min-width: 768px) {
+    .container_main {
+        height: 1080px;
+        background-image: url('/static/images/little_league_field_1920x1080_ps_final_2.png');
+        padding: 0px;
+    }
 }
 
-.profile_image {
-    height: 30px; 
-    width: 30px; 
-    object-fit: cover;
-    border-radius:50px;
+/* .hide {
+    display: none;
+} */
+
+/* @media screen and (max-width: 767) {
+    .hide {
+        display: none;
+    }
+} */
+
+@media screen and (min-width: 768px) {
+    .profile_div {
+        display: block; 
+        width: 30px; 
+        height: 30px; 
+        border-radius: 50px; 
+        background-image: url('/static/images/user_circle_30px.png')
+    }
 }
 
-#flash_div_50h {
-    height: 50%;
+@media screen and (min-width: 768px) {
+    .profile_image {
+        height: 30px; 
+        width: 30px; 
+        object-fit: cover;
+        border-radius:50px;
+    }
 }
 
-.welcome_margin_top {
-    margin-top: 127px;
+@media screen and (min-width: 768px) {
+    #flash_div_50h {
+        height: 50%;
+    }
 }
 
-.header_margin {
-    margin-bottom: 4px;
-    padding-left: 8px;
+@media screen and (min-width: 768px) {
+    .welcome_margin_top {
+        margin-top: 127px;
+    }
 }
 
-#coach_table_fname_margin {
-    padding-left: 12px;
+@media screen and (min-width: 768px) {
+    .header_margin {
+        margin-bottom: 4px;
+        padding-left: 8px;
+    }
 }
 
-.nav_margin_bottom {
-    margin-bottom: 26.39px;
+@media screen and (min-width: 768px) {
+    #coach_table_fname_margin {
+        padding-left: 12px;
+    }
 }
 
-#player_profile_pic_padding {
-    padding-left: 12px;
+@media screen and (min-width: 768px) {
+    .nav_margin_bottom {
+        margin-bottom: 26.39px;
+    }
 }
 
-#delete_warning_margin_bottom {
-    margin-bottom: 14px;
+@media screen and (min-width: 768px) {
+    #player_profile_pic_padding {
+        padding-left: 12px;
+    }
 }
 
-#home_welcome_padding_top {
-    padding-top: 104px;
+@media screen and (min-width: 768px) {
+    #delete_warning_margin_bottom {
+        margin-bottom: 14px;
+    }
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+@media screen and (min-width: 768px) {
+    #home_welcome_padding_top {
+        padding-top: 104px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 }
 
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+@media screen and (min-width: 768px) {
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
 }
