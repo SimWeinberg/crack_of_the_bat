@@ -12,15 +12,15 @@
     }
 }
 
-/* .hide {
+.hide {
     display: none;
-} */
+}
 
-/* @media screen and (max-width: 767) {
+@media screen and (min-width: 768px) {
     .hide {
-        display: none;
+        display: block;
     }
-} */
+}
 
 @media screen and (min-width: 768px) {
     .profile_div {
