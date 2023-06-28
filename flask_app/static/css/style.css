@@ -4,7 +4,7 @@
     padding: 0px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
     .container_main {
         height: 1080px;
         background-image: url('/static/images/little_league_field_1920x1080_ps_final_2.png');
@@ -12,15 +12,39 @@
     }
 }
 
-.hide {
+.mobile_hide {
     display: none;
 }
 
-@media screen and (min-width: 768px) {
-    .hide {
+@media screen and (min-width: 992px) {
+    .mobile_hide {
         display: block;
     }
 }
+
+.mobile_hide_table {
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+    .mobile_hide_table {
+        display: table;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .desktop_hide {
+        display: none;
+    }
+}
+
+.profile_div {
+        display: block; 
+        width: 30px; 
+        height: 30px; 
+        border-radius: 50px; 
+        background-image: url('/static/images/user_circle_30px.png')
+    }
 
 @media screen and (min-width: 768px) {
     .profile_div {
@@ -31,6 +55,13 @@
         background-image: url('/static/images/user_circle_30px.png')
     }
 }
+
+.profile_image {
+        height: 30px; 
+        width: 30px; 
+        object-fit: cover;
+        border-radius:50px;
+    }
 
 @media screen and (min-width: 768px) {
     .profile_image {

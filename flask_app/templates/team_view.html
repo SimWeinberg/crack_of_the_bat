@@ -10,7 +10,58 @@
 </head>
 <body>
     <div class="container-fluid container_main">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark desktop_hide">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    {% if not parent %}
+                        <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
+                        <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
+                            {% if coach.image_path != None %}
+                                <img class="profile_image" src="{{coach.image_path}}" alt="profile image">   
+                            {% endif %}
+                        </a>
+                    {% elif parent %}
+                        <span class="navbar-text me-2">Hello {{parent.first_name}}</span>
+                    {% endif %}
+                    <ul class="navbar-nav me-auto">
+                        {% if not parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/coach/dashboard">Dashboard</a>
+                            </li>
+                        {% elif parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/parent/dashboard">Dashboard</a>
+                            </li>
+                        {% endif %}
+                        {% if not parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/games/view/{{team.id}}">Schedule</a>
+                            </li>
+                        {% elif parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/games/view/parent/{{team.id}}">Schedule</a>
+                            </li>
+                        {% endif %}
+                        {% if not parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/player/add/{{team.id}}">Add Player</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/parents/view/{{team.id}}">Parents</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mobile_hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,10 +113,10 @@
             </div>
         </nav>
         {% if team.players %}
-            <div class="col-4 p-1 hide">
+            <div class="col-4 p-1 mobile_hide">
                 <h2 class="fw-bold header_margin">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
             </div>
-            <table class="table table-dark table-hover hide">
+            <table class="table table-dark table-hover mobile_hide_table">
                 <thead>
                     <tr>
                         <th scope="col"></th> 
