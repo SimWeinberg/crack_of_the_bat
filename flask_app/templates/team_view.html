@@ -113,6 +113,12 @@
             </div>
         </nav>
         {% if team.players %}
+            <div class="col-1 p-1 desktop_hide">
+                <h2 class="fw-bold header_margin">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
+            </div>
+            
+
+
             <div class="col-4 p-1 mobile_hide">
                 <h2 class="fw-bold header_margin">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
             </div>
