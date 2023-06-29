@@ -1,6 +1,6 @@
 .container_main {
-    /* height: 1080px;
-    background-image: url('/static/images/little_league_field_1920x1080_ps_final_2.png'); */
+    height: 1080px;
+    background-image: url('/static/images/little_league_field_1920x1080_ps_final_2.png');
     padding: 0px;
 }
 
@@ -94,6 +94,10 @@
         margin-bottom: 4px;
         padding-left: 8px;
     }
+}
+
+.overflow {
+    overflow-x: auto;
 }
 
 @media screen and (min-width: 992px) {
