@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container-fluid container_main">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark desktop_hide">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top desktop_hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,6 +61,41 @@
                 </div>  
             </div>
         </nav>
+        {% if team.players %}
+            <div class="p-1 desktop_hide">
+                <h2 class="fw-bold header_margin">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
+                <!-- <h2 class="fw-bold header_margin">A whole lot of lettttters in this name</h2> -->
+            </div>
+            <div id="spacer"></div>
+            {% for player in team.players %} 
+                <div class="container desktop_hide">
+                    <div class="row justify-content-center">
+                        <div class="col-3 d-flex justify-content-center">
+                            {% if not parent %}
+                                <!-- <td id="player_profile_pic_padding"> -->
+                                    <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
+                                        {% if player.image_path != None %}
+                                            <img class="profile_image" src="{{player.image_path}}" alt="profile image">
+                                        {% endif %}
+                                    </a>
+                                <!-- </td> -->
+                            {% elif parent %}
+                                <!-- <td id="player_profile_pic_padding"> -->
+                                    <div class="profile_div"></div>
+                                <!-- </td> -->
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="text-center pt-5">
+                <h1 class="fw-bold display-4 welcome_margin_top">Add a player to get started</h1>
+            </div>
+        {% endif %} 
+
+
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mobile_hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
@@ -112,38 +147,6 @@
                 </div>  
             </div>
         </nav>
-        {% if team.players %}
-            <div class="p-1 desktop_hide">
-                <h2 class="fw-bold header_margin">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
-            </div>
-            {% for player in team.players %} 
-                <div class="container desktop_hide">
-                    <div class="row justify-content-center">
-                        <div class="col-3 d-flex justify-content-center">
-                            {% if not parent %}
-                                <!-- <td id="player_profile_pic_padding"> -->
-                                    <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
-                                        {% if player.image_path != None %}
-                                            <img class="profile_image" src="{{player.image_path}}" alt="profile image">
-                                        {% endif %}
-                                    </a>
-                                <!-- </td> -->
-                            {% elif parent %}
-                                <!-- <td id="player_profile_pic_padding"> -->
-                                    <div class="profile_div"></div>
-                                <!-- </td> -->
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <div class="text-center pt-5">
-                <h1 class="fw-bold display-4 welcome_margin_top">Add a player to get started</h1>
-            </div>
-        {% endif %} 
-
-
         {% if team.players %}
             <div class="col-4 p-1 mobile_hide">
                 <h2 class="fw-bold header_margin">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
