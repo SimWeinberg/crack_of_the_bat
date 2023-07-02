@@ -87,7 +87,6 @@
 .header_margin {
     margin-top: 56px;
     margin-bottom: 4px;
-    padding-left: 8px;
 }
 
 @media screen and (min-width: 992px) {
@@ -96,10 +95,6 @@
         padding-left: 8px;
     }
 }
-
-/* .overflow {
-    overflow-x: auto;
-} */
 
 @media screen and (min-width: 992px) {
     #coach_table_fname_margin {
