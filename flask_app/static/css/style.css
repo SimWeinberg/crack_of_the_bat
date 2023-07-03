@@ -40,8 +40,8 @@
 
 .profile_div {
         display: block; 
-        width: 100px; 
-        height: 100px; 
+        width: 85px; 
+        height: 85px; 
         border-radius: 50px; 
         background-image: url('/static/images/user_circle_30px.png')
     }
@@ -57,8 +57,8 @@
 }
 
 .profile_image {
-        height: 100px; 
-        width: 100px; 
+        height: 85px; 
+        width: 85px; 
         object-fit: cover;
         border-radius:50px;
     }
@@ -94,6 +94,11 @@
         margin-bottom: 4px;
         padding-left: 8px;
     }
+}
+
+.header_margin_temp {
+    margin-bottom: 4px;
+    padding-left: 8px;
 }
 
 @media screen and (min-width: 992px) {
