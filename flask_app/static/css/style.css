@@ -4,6 +4,15 @@
     padding: 0px;
 }
 
+.dark_mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark_mode_profile_img_border {
+    border: 2px solid #fff !important;
+}
+
 @media screen and (min-width: 992px) {
     .container_main {
         height: 1080px;
@@ -73,6 +82,10 @@
     }
 }
 
+.player_margin_bottom {
+    margin-bottom: 25px;
+}
+
 @media screen and (min-width: 992px) {
     #flash_div_50h {
         height: 50%;
@@ -87,7 +100,7 @@
 
 .header_margin {
     margin-top: 56px;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
 }
 
 @media screen and (min-width: 992px) {
