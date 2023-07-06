@@ -118,6 +118,11 @@
                                     </div>
                                 </li>
                             {% endif %}
+                            <li class="list-group-item border-0 stat_metric dark_mode">
+                                <div>
+                                    <button class="btn dropdown-toggle dark_mode" type="button">edit</button>
+                                </div>
+                            </li>
                             {% if player.slg %}
                                 <li class="list-group-item border-0 stat_metric dark_mode">
                                     <div>
@@ -144,9 +149,9 @@
                 
                 <div class="d-flex justify-content-center player_margin_bottom desktop_hide">
                     <ul class="list-group list-group-horizontal desktop_hide">
-                        <li class="list-group-item border-0 dark_mode">edit player</li>
-                        <li class="list-group-item border-0 dark_mode">edit stats</li>
-                        <li class="list-group-item border-0 dark_mode">delete</li>
+                        <!-- <li class="list-group-item border-0 dark_mode">edit player</li> -->
+                        <!-- <li class="list-group-item border-0 dark_mode">edit stats</li>
+                        <li class="list-group-item border-0 dark_mode">delete</li> -->
                     </ul>
                 </div>
             {% endfor %}
