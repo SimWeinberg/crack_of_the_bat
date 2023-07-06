@@ -4,14 +4,14 @@
     padding: 0px;
 }
 
-.dark_mode {
+/* .dark_mode {
     background-color: #333;
     color: #fff;
 }
 
 .dark_mode_border {
     border: 2px solid #fff !important;
-}
+} */
 
 @media screen and (min-width: 992px) {
     .container_main {
@@ -96,6 +96,10 @@
 }
 
 .edit_button_metric {
+    padding: 0px 12px 0px 12px;
+}
+
+.edit_div_padding {
     padding: 0px 12px 40px 12px;
 }
 
