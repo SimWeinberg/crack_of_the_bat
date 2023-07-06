@@ -4,14 +4,14 @@
     padding: 0px;
 }
 
-/* .dark_mode {
+.dark_mode {
     background-color: #333;
     color: #fff;
 }
 
 .dark_mode_profile_img_border {
     border: 2px solid #fff !important;
-} */
+}
 
 @media screen and (min-width: 992px) {
     .container_main {
@@ -90,8 +90,9 @@
     padding: 8px 3px 8px 3px;
 }
 
-.stat_align {
+.stat_metric {
     text-align: center;
+    padding-top: 4px;
 }
 
 @media screen and (min-width: 992px) {
