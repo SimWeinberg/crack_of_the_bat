@@ -4,14 +4,14 @@
     padding: 0px;
 }
 
-.dark_mode {
+/* .dark_mode {
     background-color: #333;
     color: #fff;
 }
 
 .dark_mode_profile_img_border {
     border: 2px solid #fff !important;
-}
+} */
 
 @media screen and (min-width: 992px) {
     .container_main {
@@ -84,6 +84,14 @@
 
 .player_margin_bottom {
     margin-bottom: 25px;
+}
+
+.player_info_padding {
+    padding: 8px 3px 8px 3px;
+}
+
+.stat_align {
+    text-align: center;
 }
 
 @media screen and (min-width: 992px) {
