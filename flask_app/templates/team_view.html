@@ -74,7 +74,7 @@
                                 <div>
                                     <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image dark_mode_profile_img_border" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile_image dark_mode_border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </a>
                                 </div>
@@ -95,63 +95,58 @@
                         <li class="list-group-item border-0 player_info_padding dark_mode">{{player.position}}</li>
                     </ul>
                 </div>
-                
-                    <div class="d-flex justify-content-center desktop_hide">
-                        <ul class="list-group list-group-horizontal desktop_hide">
-                            {% if player.avg %}
-                                <li class="list-group-item border-0 stat_metric dark_mode">
-                                    <div>
-                                        AVG
-                                    </div>
-                                    <div>
-                                        {{player.avg}}
-                                    </div>
-                                </li>
-                            {% endif %}
-                            {% if player.obp %}
-                                <li class="list-group-item border-0 stat_metric dark_mode">
-                                    <div>
-                                        OBP
-                                    </div>
-                                    <div>
-                                        {{player.obp}}
-                                    </div>
-                                </li>
-                            {% endif %}
+                <div class="d-flex justify-content-center desktop_hide">
+                    <ul class="list-group list-group-horizontal desktop_hide">
+                        {% if player.avg %}
                             <li class="list-group-item border-0 stat_metric dark_mode">
                                 <div>
-                                    <button class="btn dropdown-toggle dark_mode" type="button">edit</button>
+                                    AVG
+                                </div>
+                                <div>
+                                    {{player.avg}}
                                 </div>
                             </li>
-                            {% if player.slg %}
-                                <li class="list-group-item border-0 stat_metric dark_mode">
-                                    <div>
-                                        SLG
-                                    </div>
-                                    <div>
-                                        {{player.slg}}
-                                    </div>
-                                </li>
-                            {% endif %}
-                            {% if player.era %}
-                                <li class="list-group-item border-0 stat_metric dark_mode">
-                                    <div>
-                                        ERA
-                                    </div>
-                                    <div>
-                                        {{player.era}}
-                                    </div>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                    
-                
-                <div class="d-flex justify-content-center player_margin_bottom desktop_hide">
-                    <ul class="list-group list-group-horizontal desktop_hide">
-                        <!-- <li class="list-group-item border-0 dark_mode">edit player</li> -->
-                        <!-- <li class="list-group-item border-0 dark_mode">edit stats</li>
-                        <li class="list-group-item border-0 dark_mode">delete</li> -->
+                        {% endif %}
+                        {% if player.obp %}
+                            <li class="list-group-item border-0 stat_metric dark_mode">
+                                <div>
+                                    OBP
+                                </div>
+                                <div>
+                                    {{player.obp}}
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if player.slg %}
+                            <li class="list-group-item border-0 stat_metric dark_mode">
+                                <div>
+                                    SLG
+                                </div>
+                                <div>
+                                    {{player.slg}}
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if player.era %}
+                            <li class="list-group-item border-0 stat_metric dark_mode">
+                                <div>
+                                    ERA
+                                </div>
+                                <div>
+                                    {{player.era}}
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="dropdown d-flex justify-content-center desktop_hide">
+                    <button class="btn dropdown-toggle border-0 edit_button_metric desktop_hide dark_mode" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Edit
+                    </button>
+                    <ul class="dropdown-menu dark_mode_border dark_mode" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item dark_mode" href="#">Edit Player</a></li>
+                        <li><a class="dropdown-item dark_mode" href="#">Edit Stats</a></li>
+                        <li><a class="dropdown-item dark_mode" href="#">Delete</a></li>
                     </ul>
                 </div>
             {% endfor %}

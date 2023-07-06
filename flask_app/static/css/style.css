@@ -9,7 +9,7 @@
     color: #fff;
 }
 
-.dark_mode_profile_img_border {
+.dark_mode_border {
     border: 2px solid #fff !important;
 }
 
@@ -93,6 +93,10 @@
 .stat_metric {
     text-align: center;
     padding-top: 0px;
+}
+
+.edit_button_metric {
+    padding: 0px 12px 40px 12px;
 }
 
 @media screen and (min-width: 992px) {
