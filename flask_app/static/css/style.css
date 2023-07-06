@@ -92,7 +92,7 @@
 
 .stat_metric {
     text-align: center;
-    padding-top: 4px;
+    padding-top: 0px;
 }
 
 @media screen and (min-width: 992px) {
