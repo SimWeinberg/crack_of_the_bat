@@ -90,15 +90,15 @@
                 </div>
                 <div class="d-flex justify-content-center desktop_hide">
                     <ul class="list-group list-group-horizontal desktop_hide">
-                        <li class="list-group-item border-0 player_info_padding dark_mode">{{player.first_name}}</li>
-                        <li class="list-group-item border-0 player_info_padding dark_mode">{{player.last_name}}</li>
-                        <li class="list-group-item border-0 player_info_padding dark_mode">{{player.position}}</li>
+                        <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{player.first_name}}</li>
+                        <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{player.last_name}}</li>
+                        <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{player.position}}</li>
                     </ul>
                 </div>
                 <div class="d-flex justify-content-center desktop_hide">
                     <ul class="list-group list-group-horizontal desktop_hide">
                         {% if player.avg %}
-                            <li class="list-group-item border-0 stat_metric dark_mode">
+                            <li class="list-group-item border-0 fw-bold stat_metric dark_mode">
                                 <div>
                                     AVG
                                 </div>
@@ -108,7 +108,7 @@
                             </li>
                         {% endif %}
                         {% if player.obp %}
-                            <li class="list-group-item border-0 stat_metric dark_mode">
+                            <li class="list-group-item border-0 fw-bold stat_metric dark_mode">
                                 <div>
                                     OBP
                                 </div>
@@ -118,7 +118,7 @@
                             </li>
                         {% endif %}
                         {% if player.slg %}
-                            <li class="list-group-item border-0 stat_metric dark_mode">
+                            <li class="list-group-item border-0 fw-bold stat_metric dark_mode">
                                 <div>
                                     SLG
                                 </div>
@@ -128,7 +128,7 @@
                             </li>
                         {% endif %}
                         {% if player.era %}
-                            <li class="list-group-item border-0 stat_metric dark_mode">
+                            <li class="list-group-item border-0 fw-bold stat_metric dark_mode">
                                 <div>
                                     ERA
                                 </div>
@@ -140,7 +140,7 @@
                     </ul>
                 </div>
                 <div class="dropdown d-flex justify-content-center edit_div_padding desktop_hide">
-                    <button class="btn dropdown-toggle border-0 edit_button_metric desktop_hide dark_mode" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn dropdown-toggle border-0 fw-bold edit_button_metric desktop_hide dark_mode" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                         Edit
                     </button>
                     <ul class="dropdown-menu dark_mode_border dark_mode" aria-labelledby="dropdownMenuButton1">
