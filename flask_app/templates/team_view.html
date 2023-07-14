@@ -146,9 +146,9 @@
                             Edit
                         </button>
                         <ul class="dropdown-menu dark_mode_border dark_mode" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item dark_mode" href="#">Edit Player</a></li>
-                            <li><a class="dropdown-item dark_mode" href="#">Edit Stats</a></li>
-                            <li><a class="dropdown-item dark_mode" href="#">Delete</a></li>
+                            <li><a class="dropdown-item dark_mode" href="/player/edit/{{player.id}}">Edit Player</a></li>
+                            <li><a class="dropdown-item dark_mode" href="/player/edit/stats/{{player.id}}">Edit Stats</a></li>
+                            <li><a class="dropdown-item dark_mode" href="/player/delete/{{player.id}}/{{team.id}}">Delete</a></li>
                         </ul>
                     </div>
                 {% elif parent %}
