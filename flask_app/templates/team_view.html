@@ -17,17 +17,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- {% if not parent %}
-                        <button type="button" class="btn btn-primary" data-bs-toggle="dark-mode"></button>
-                        <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
-                        <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
-                            {% if coach.image_path != None %}
-                                <img class="profile_image" src="{{coach.image_path}}" alt="profile image">   
-                            {% endif %}
-                        </a>
-                    {% elif parent %}
-                        <span class="navbar-text me-2">Hello {{parent.first_name}}</span>
-                    {% endif %} -->
                     <ul class="navbar-nav me-auto">
                         {% if not parent %}
                             <li class="nav-item">
@@ -62,39 +51,38 @@
                 </div>  
             </div>
         </nav>
-        {% if team.players %}
-            <div class="p-1 justify-content-center desktop_hide">
-                <h2 class="fw-bold header_margin d-flex justify-content-center text-center">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
-                <!-- <h2 class="fw-bold header_margin d-flex justify-content-center text-center">A whole lot of lettttters in this name</h2> -->
-            </div>
-            <div class="container desktop_hide">
-                <div class="row justify-content-center">
-                    <div class="col-3 d-flex justify-content-center">
-                        {% if not parent %}
-                            <div>
-                                <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
-                                    {% if coach.image_path != None %}
-                                        <img class="profile_image dark_mode_border" src="{{coach.image_path}}" alt="profile image">
-                                    {% endif %}
-                                </a>
-                            </div>
-                        {% elif parent %}
-                            <div class="profile_div player">
+        <div class="p-1 justify-content-center desktop_hide">
+            <h2 class="fw-bold header_metric d-flex justify-content-center text-center">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
+        </div>
+        <div class="container desktop_hide">
+            <div class="row justify-content-center">
+                <div class="col-3 d-flex justify-content-center">
+                    {% if not parent %}
+                        <div>
+                            <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
                                 {% if coach.image_path != None %}
-                                    <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                                    <img class="profile_image dark_mode_border" src="{{coach.image_path}}" alt="profile image">
                                 {% endif %}
-                            </div>
-                        {% endif %}
-                    </div>
+                            </a>
+                        </div>
+                    {% elif parent %}
+                        <div class="profile_div player">
+                            {% if coach.image_path != None %}
+                                <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                            {% endif %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
-            <div class="d-flex justify-content-center player_div_padding desktop_hide">
-                <ul class="list-group list-group-horizontal desktop_hide">
-                    <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.first_name}}</li>
-                    <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.last_name}}</li>
-                    <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">Coach</li>
-                </ul>
-            </div>
+        </div>
+        <div class="d-flex justify-content-center coach_div_padding desktop_hide">
+            <ul class="list-group list-group-horizontal desktop_hide">
+                <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.first_name}}</li>
+                <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.last_name}}</li>
+                <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">Coach</li>
+            </ul>
+        </div>
+        {% if team.players %}
             {% for player in team.players %} 
                 <div class="container desktop_hide">
                     <div class="row justify-content-center">
@@ -225,20 +213,11 @@
                         </ul>
                     </div>
                 {% endif %}
-                    <!-- <div class="dropdown d-flex justify-content-center player_div_padding desktop_hide">
-                        <button class="btn dropdown-toggle border-0 fw-bold edit_button_metric desktop_hide dark_mode" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Edit
-                        </button>
-                        <ul class="dropdown-menu dark_mode_border dark_mode" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item dark_mode" href="#">Edit Player</a></li>
-                            <li><a class="dropdown-item dark_mode" href="#">Edit Stats</a></li>
-                            <li><a class="dropdown-item dark_mode" href="#">Delete</a></li>
-                        </ul>
-                    </div> -->
             {% endfor %}
         {% else %}
-            <div class="text-center pt-5">
-                <h1 class="fw-bold display-4 welcome_margin_top">Add a player to get started</h1>
+            <div class="text-center  desktop_hide">
+                <a class="display-6 welcome_margin_top add_metric" href="/player/add/{{team.id}}">Add a player to get started</a>
+                <!-- <p class="fw-bold display-4 welcome_margin_top">Add a player to get started</p> -->
             </div>
         {% endif %} 
 
@@ -365,7 +344,7 @@
                 </tbody>
             </table>
         {% else %}
-            <div class="text-center pt-5">
+            <div class="text-center pt-5 mobile_hide">
                 <h1 class="fw-bold display-4 welcome_margin_top">Add a player to get started</h1>
             </div>
         {% endif %} 
