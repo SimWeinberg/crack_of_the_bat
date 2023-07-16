@@ -132,7 +132,7 @@
     text-decoration: none;
 }
 
-a:visited {
+.link_visited a:visited  {
     color: black;
 }
 
