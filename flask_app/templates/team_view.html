@@ -67,6 +67,34 @@
                 <h2 class="fw-bold header_margin d-flex justify-content-center text-center">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
                 <!-- <h2 class="fw-bold header_margin d-flex justify-content-center text-center">A whole lot of lettttters in this name</h2> -->
             </div>
+            <div class="container desktop_hide">
+                <div class="row justify-content-center">
+                    <div class="col-3 d-flex justify-content-center">
+                        {% if not parent %}
+                            <div>
+                                <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
+                                    {% if coach.image_path != None %}
+                                        <img class="profile_image dark_mode_border" src="{{coach.image_path}}" alt="profile image">
+                                    {% endif %}
+                                </a>
+                            </div>
+                        {% elif parent %}
+                            <div class="profile_div player">
+                                {% if coach.image_path != None %}
+                                    <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center player_div_padding desktop_hide">
+                <ul class="list-group list-group-horizontal desktop_hide">
+                    <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.first_name}}</li>
+                    <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.last_name}}</li>
+                    <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">Coach</li>
+                </ul>
+            </div>
             {% for player in team.players %} 
                 <div class="container desktop_hide">
                     <div class="row justify-content-center">
