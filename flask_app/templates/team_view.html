@@ -264,7 +264,7 @@
                         <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
                         <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
                             {% if coach.image_path != None %}
-                                <img class="profile_image" src="{{coach.image_path}}" alt="profile image">   
+                                <img class="profile_image_temp" src="{{coach.image_path}}" alt="profile image">   
                             {% endif %}
                         </a>
                     {% elif parent %}
@@ -302,7 +302,7 @@
                                 <td id="player_profile_pic_padding">
                                     <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile_image_temp" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </a>
                                 </td>

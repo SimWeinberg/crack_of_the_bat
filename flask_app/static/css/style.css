@@ -74,14 +74,21 @@
         border: 2px solid black;
     }
 
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 992px) {
     .profile_image {
         height: 30px; 
         width: 30px; 
         object-fit: cover;
         border-radius:50px;
     }
-}
+} */
+
+.profile_image_temp {
+        height: 30px; 
+        width: 30px; 
+        object-fit: cover;
+        border-radius:50px;
+    }
 
 .coach_div_padding {
     padding: 0px 12px 25px 12px;
@@ -136,12 +143,12 @@
     color: black;
 }
 
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 992px) {
     .header_margin {
         margin-bottom: 4px;
         padding-left: 8px;
     }
-}
+} */
 
 .header_margin_temp {
     margin-bottom: 4px;
