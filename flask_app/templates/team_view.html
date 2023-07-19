@@ -66,9 +66,9 @@
                             </a>
                         </div>
                     {% elif parent %}
-                        <div class="profile_div player">
+                        <div class="profile_div">
                             {% if coach.image_path != None %}
-                                <img class="profile_image" src="{{coach.image_path}}" alt="profile image">
+                                <img class="profile_image dark_mode_border" src="{{coach.image_path}}" alt="profile image">
                             {% endif %}
                         </div>
                     {% endif %}
@@ -96,10 +96,12 @@
                                     </a>
                                 </div>
                             {% elif parent %}
-                                <div class="profile_div">
-                                    {% if player.image_path != None %}
-                                        <img class="profile_image" src="{{player.image_path}}" alt="profile image">
-                                    {% endif %}
+                                <div>
+                                    <div class="profile_div">
+                                        {% if player.image_path != None %}
+                                            <img class="profile_image dark_mode_border" src="{{player.image_path}}" alt="profile image">
+                                        {% endif %}
+                                    </div>
                                 </div>
                             {% endif %}
                         </div>
