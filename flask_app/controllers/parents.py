@@ -64,17 +64,20 @@ def parent_dashboard():
     }
     return render_template('parent_dashboard.html', parent_and_teams = Parent.get_parent_and_teams(data))
 
-@app.route('/parent/team/view/<int:id>')
-def parent_team_view(id):
+@app.route('/parent/team/view/<int:id>/<int:id2>')
+def parent_team_view(id, id2):
     if not 'user_id' in session:
         return redirect('/')
     team_id = {
         "id" : id
     }
+    coach_id = {
+        "id" : id2
+    }
     parent_id = {
         "id" : session['user_id']
     }
-    return render_template('team_view.html', team = Team.get_team_and_players(team_id), parent = Parent.get_one(parent_id))
+    return render_template('team_view.html', team = Team.get_team_and_players(team_id), parent = Parent.get_one(parent_id), coach = Coach.get_coach(coach_id))
 
 @app.route('/parents/view/<int:id>')
 def parents_view(id):
