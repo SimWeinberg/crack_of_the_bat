@@ -48,6 +48,10 @@
     }
 }
 
+.coach_div_padding {
+    padding-top: 18px;
+}
+
 .profile_div {
         display: block; 
         width: 85px; 
@@ -90,8 +94,8 @@
         border-radius:50px;
     }
 
-.coach_div_padding {
-    padding: 0px 12px 25px 12px;
+.coach_name_padding {
+    padding: 0px 12px 40px 12px;
 }
 
 .player_margin_bottom {
