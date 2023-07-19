@@ -310,7 +310,11 @@
                                 </td>
                             {% elif parent %}
                                 <td id="player_profile_pic_padding">
-                                    <div class="profile_div"></div>
+                                    <div class="profile_div">
+                                        {% if player.image_path != None %}
+                                            <img class="profile_image_temp dark_mode_border" src="{{player.image_path}}" alt="profile image">
+                                        {% endif %}
+                                    </div>
                                 </td>
                             {% endif %}
                             <td class="fw-bold">{{player.first_name}}</td>
