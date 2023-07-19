@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center coach_name_padding desktop_hide">
+        <div class="d-flex justify-content-center player_div_padding desktop_hide">
             <ul class="list-group list-group-horizontal desktop_hide">
                 <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.first_name}}</li>
                 <li class="list-group-item border-0 fw-bold fs-5 player_info_padding dark_mode">{{coach.last_name}}</li>
@@ -217,9 +217,8 @@
                 {% endif %}
             {% endfor %}
         {% else %}
-            <div class="text-center  desktop_hide">
+            <div class="text-center desktop_hide">
                 <span class="link_visited"><a class="display-6 welcome_margin_top add_metric" href="/player/add/{{team.id}}">Add a player to get started</a></span>
-                <!-- <p class="fw-bold display-4 welcome_margin_top">Add a player to get started</p> -->
             </div>
         {% endif %} 
 

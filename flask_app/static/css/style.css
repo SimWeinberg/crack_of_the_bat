@@ -94,8 +94,15 @@
         border-radius:50px;
     }
 
-.coach_name_padding {
-    padding: 0px 12px 40px 12px;
+.add_team_padding {
+    padding-top: 8px;
+}
+
+.hello_metric {
+    margin-top: 56px;
+    margin-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .player_margin_bottom {
