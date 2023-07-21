@@ -94,7 +94,7 @@
         border-radius:50px;
     }
 
-.add_team_padding {
+.message_below_avatar {
     padding-top: 8px;
 }
 
@@ -141,11 +141,22 @@
 .header_metric {
     margin-top: 56px;
     margin-bottom: 10px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.add_metric {
+.team_metric {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 0px;
+}
+
+/* .your_teams_metric {
+    margin-top: 12px;
+    margin-bottom: 0px;
+} */
+
+.link_metric {
     color: black;
     text-decoration: none;
 }
