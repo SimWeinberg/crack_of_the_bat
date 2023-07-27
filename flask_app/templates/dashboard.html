@@ -46,6 +46,12 @@
                                 {% endif %}
                             </a>
                         </div>
+                    {% elif parent %}
+                        <div>
+                            <a href="#" button class="profile_div">
+                                
+                            </a>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -131,6 +137,11 @@
                         </a>
                     {% elif parent %}
                         <span class="navbar-text me-2">Hello {{parent_and_teams.first_name}}</span>
+                        <div>
+                            <a href="#" button class="profile_div">
+                                
+                            </a>
+                        </div>
                     {% endif %}
                 </div>  
             </div>
