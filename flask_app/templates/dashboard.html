@@ -102,7 +102,7 @@
                     <div class="d-flex justify-content-center team_margin_bottom desktop_hide">
                         <ul class="list-group list-group-horizontal desktop_hide">
                             <span class="link_visited">
-                                <a class="link_metric player_info_padding" href="/team/view/{{team.id}}">View</a>
+                                <a class="link_metric player_info_padding" href="/parent/team/view/{{team.id}}/{{team.coach_id}}">View</a>
                             </span>
                         </ul>
                     </div>
@@ -182,7 +182,7 @@
                                 <td class="fw-bold" id="coach_table_fname_margin">{{team.name}}</td>
                                 <td class="fw-bold">{{team.year}}</td>
                                 <td class="fw-bold">{{team.wins}}-{{team.losses}}</td>
-                                <td class="fw-bold"><a href="/team/view/{{team.id}}">view</a></td>
+                                <td class="fw-bold"><a href="/parent/team/view/{{team.id}}/{{team.coach_id}}">view</a></td>
                             </tr>
                         {% endfor %} 
                     </tbody>

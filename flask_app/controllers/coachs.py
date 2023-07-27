@@ -39,7 +39,7 @@ def register_coach():
     }
     id = Coach.save(data)
     session['user_id'] = id
-    return redirect('/dashboard') 
+    return redirect('/coach/dashboard') 
 
 @app.route('/login/coach', methods=['POST'])
 def login_coach():
@@ -54,9 +54,9 @@ def login_coach():
         flash("Invalid Email/Password")
         return redirect('/login')
     session['user_id'] = user_in_db.id
-    return redirect('/dashboard')
+    return redirect('/coach/dashboard')
 
-@app.route('/dashboard')
+@app.route('/coach/dashboard')
 def coach_dashboard():
     if not 'user_id' in session:
         return redirect('/')
