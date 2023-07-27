@@ -62,7 +62,7 @@ def parent_dashboard():
     data = {
         "id" : session['user_id']
     }
-    return render_template('coach_dashboard.html', parent_and_teams = Parent.get_parent_and_teams(data))
+    return render_template('dashboard.html', parent = Parent.get_one(data), parent_and_teams = Parent.get_parent_and_teams(data))
 
 @app.route('/parent/team/view/<int:id>/<int:id2>')
 def parent_team_view(id, id2):

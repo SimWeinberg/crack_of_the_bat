@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Crack of The Bat!</title>
+</head>
+<body>
+    <div class="container-fluid container_main">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top desktop_hide">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        {% if not parent %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/team/add">Add Team</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        <div class="p-1 justify-content-center desktop_hide">
+            {% if not parent %}
+                <h2 class="fw-bold hello_metric d-flex justify-content-center text-center">{{coach_and_teams.first_name}}'s Teams</h2>
+            {% endif %}
+        </div>
+        <div class="container desktop_hide">
+            <div class="row justify-content-center">
+                <div class="col-3 d-flex justify-content-center">
+                    {% if not parent %}
+                        <div>
+                            <a href="/coach/upload/pic" button class="profile_div">
+                                {% if coach_and_teams.image_path != None %}
+                                    <img class="profile_image dark_mode_border" src="{{coach_and_teams.image_path}}" alt="profile image">
+                                {% endif %}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% if not parent %}
+            {% if coach_and_teams.teams %}
+                <!-- <div class="d-flex justify-content-center desktop_hide">
+                    <p class="fw-bold fs-5 your_teams_metric">Your Teams</p>
+                </div> -->
+                {% for team in coach_and_teams.teams %}
+                    <div class="p-1 justify-content-center desktop_hide">
+                        <h2 class="fw-bold team_metric d-flex justify-content-center text-center">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
+                    </div>
+                    <div class="d-flex justify-content-center team_margin_bottom desktop_hide">
+                        <ul class="list-group list-group-horizontal desktop_hide">
+                            <span class="link_visited">
+                                <a class="link_metric player_info_padding" href="/team/view/{{team.id}}">View</a>
+                            </span>
+                        </ul>
+                        <ul class="list-group list-group-horizontal desktop_hide">
+                            <span class="link_visited">
+                                <a class="link_metric player_info_padding" href="/team/edit/{{team.id}}">Edit</a>
+                            </span>
+                        </ul>
+                        <ul class="list-group list-group-horizontal desktop_hide">
+                            <span class="link_visited">
+                                <a class="link_metric player_info_padding" href="/team/delete/warning/{{team.id}}">Delete</a>
+                            </span>
+                        </ul>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% elif parent %}
+            {% if parent_and_teams.teams %}
+            <!-- <div class="d-flex justify-content-center desktop_hide">
+                <p class="fw-bold fs-5 your_teams_metric">Your Teams</p>
+            </div> -->
+                {% for team in parent_and_teams.teams %}
+                    <div class="p-1 justify-content-center desktop_hide">
+                        <h2 class="fw-bold team_metric d-flex justify-content-center text-center">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
+                    </div>
+                    <div class="d-flex justify-content-center team_margin_bottom desktop_hide">
+                        <ul class="list-group list-group-horizontal desktop_hide">
+                            <span class="link_visited">
+                                <a class="link_metric player_info_padding" href="/team/view/{{team.id}}">View</a>
+                            </span>
+                        </ul>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <div class="text-center message_below_avatar desktop_hide">
+                <span class="link_visited">
+                    <a class="display-6 welcome_margin_top link_metric" href="/team/add">Add a team to get started</a>
+                </span>
+            </div>
+        {% endif %} 
+
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mobile_hide">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        {% if not parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/team/add">Add Team</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                    {% if not parent %}
+                        <span class="navbar-text me-2">Hello {{coach_and_teams.first_name}}</span>
+                        <a href="/coach/upload/pic" button class="profile_div">
+                            {% if coach_and_teams.image_path != None %}
+                                <img class="profile_image_temp" src="{{coach_and_teams.image_path}}" alt="profile image">
+                            {% endif %}
+                        </a>
+                    {% elif parent %}
+                        <span class="navbar-text me-2">Hello {{parent_and_teams.first_name}}</span>
+                    {% endif %}
+                </div>  
+            </div>
+        </nav>
+        {% if not parent %}
+            {% if coach_and_teams.teams %}
+                <div class="col-4 p-1 mobile_hide">
+                    <h2 class="fw-bold header_margin">{{coach_and_teams.first_name}}'s Teams</h2>
+                </div>
+                <table class="table table-dark table-hover mobile_hide_table">
+                    <tbody>
+                        {% for team in coach_and_teams.teams %}   
+                            <tr>
+                                <td class="fw-bold" id="coach_table_fname_margin">{{team.name}}</td>
+                                <td class="fw-bold">{{team.year}}</td>
+                                <td class="fw-bold">{{team.wins}}-{{team.losses}}</td>
+                                <td class="fw-bold"><a href="/team/view/{{team.id}}">view</a></td>
+                                <td class="fw-bold"><a href="/team/edit/{{team.id}}">edit</a></td>
+                                <td class="fw-bold"><a href="/team/delete/warning/{{team.id}}">delete</a></td>
+                            </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            {% endif %}
+        {% elif parent %}
+            {% if parent_and_teams.teams %}
+                <div class="col-4 p-1 mobile_hide">
+                    <h2 class="fw-bold header_margin">{{parent_and_teams.first_name}}'s Teams</h2>
+                </div>
+                <table class="table table-dark table-hover mobile_hide_table">
+                    <tbody>
+                        {% for team in parent_and_teams.teams %}   
+                            <tr>
+                                <td class="fw-bold" id="coach_table_fname_margin">{{team.name}}</td>
+                                <td class="fw-bold">{{team.year}}</td>
+                                <td class="fw-bold">{{team.wins}}-{{team.losses}}</td>
+                                <td class="fw-bold"><a href="/team/view/{{team.id}}">view</a></td>
+                                <td class="fw-bold"><a href="/team/edit/{{team.id}}">edit</a></td>
+                                <td class="fw-bold"><a href="/team/delete/warning/{{team.id}}">delete</a></td>
+                            </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            {% endif %}
+        {% else %}
+            <div class="text-center pt-5 mobile_hide">
+                <h1 class="fw-bold display-4 welcome_margin_top">Add a team to get started</h1>
+            </div>
+        {% endif %} 
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+<html>
