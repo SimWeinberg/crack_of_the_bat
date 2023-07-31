@@ -33,12 +33,12 @@
         <div class="p-1 justify-content-center desktop-hide">
             {% if not parent_and_teams %}
                 {% if not coach_and_teams.teams %}
-                    <h2 class="fw-bold hello_metric d-flex justify-content-center text-center">Hello {{coach_and_teams.first_name}}</h2>
+                    <h2 class="fw-bold header d-flex justify-content-center text-center">Hello {{coach_and_teams.first_name}}</h2>
                 {% elif coach_and_teams.teams %}
-                    <h2 class="fw-bold hello_metric d-flex justify-content-center text-center">{{coach_and_teams.first_name}}'s Teams</h2>
+                    <h2 class="fw-bold header d-flex justify-content-center text-center">{{coach_and_teams.first_name}}'s Teams</h2>
                 {% endif %}
             {% elif parent_and_teams %}
-                <h2 class="fw-bold hello_metric d-flex justify-content-center text-center">{{parent_and_teams.first_name}}'s Teams</h2>
+                <h2 class="fw-bold header d-flex justify-content-center text-center">{{parent_and_teams.first_name}}'s Teams</h2>
             {% endif %}
         </div>
         <div class="container desktop-hide">
