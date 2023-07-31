@@ -43,7 +43,7 @@
 }
 
 @media screen and (min-width: 992px) {
-    .desktop_hide {
+    .desktop-hide {
         display: none !important;
     }
 }
