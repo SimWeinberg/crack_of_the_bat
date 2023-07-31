@@ -48,6 +48,12 @@
     }
 }
 
+.form {
+    padding-top: 10px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
 .coach_div_padding {
     padding-top: 18px;
 }

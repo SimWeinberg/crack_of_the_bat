@@ -29,7 +29,7 @@
             </div>
         </nav>
         <div class="row d-flex justify-content-center desktop_hide">
-            <div class=" m-4 p-4">
+            <div class="form">
                 <h3>Add A Team</h3>
                 <form action="/team/create" method="post">
                     <input type="hidden" name="coach_id" value="{{session.user_id}}">
@@ -38,7 +38,7 @@
                     <label for="year">Year:</label>
                     <input type="number" class="form-control" name="year">
                     <br>
-                    <input type="submit" class="btn btn-primary" value="Add Team">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Add Team">
                 </form>
             </div>
         </div>
