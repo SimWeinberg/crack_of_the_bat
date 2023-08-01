@@ -133,7 +133,7 @@
     padding: 0px 12px 30px 12px;
 }
 
-.dropdown_arrow::after {
+.dropdown-arrow::after {
     content: none;
 }
 
