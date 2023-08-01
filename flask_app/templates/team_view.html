@@ -172,7 +172,7 @@
                         </ul>
                     </div>
                 {% elif parent %}
-                    <div class="d-flex justify-content-center desktop-hide player-div-padding">
+                    <div class="d-flex justify-content-center player-div-padding desktop-hide">
                         <ul class="list-group list-group-horizontal desktop-hide">
                             {% if player.avg %}
                                 <li class="list-group-item border-0 fw-bold stat dark-mode">
@@ -220,7 +220,7 @@
             {% endfor %}
         {% else %}
             <div class="text-center desktop-hide">
-                <span class="link_visited">
+                <span class="link-visited ">
                     <a class="display-6 welcome_margin_top link_metric" href="/player/add/{{team.id}}">Add a player to get started</a>
                 </span>
             </div>
