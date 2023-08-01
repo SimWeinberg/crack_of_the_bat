@@ -63,14 +63,14 @@
                         <div>
                             <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
                                 {% if coach.image_path != None %}
-                                    <img class="profile_image dark-mode_border" src="{{coach.image_path}}" alt="profile image">
+                                    <img class="profile_image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
                                 {% endif %}
                             </a>
                         </div>
                     {% elif parent %}
                         <div class="profile_div">
                             {% if coach.image_path != None %}
-                                <img class="profile_image dark-mode_border" src="{{coach.image_path}}" alt="profile image">
+                                <img class="profile_image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
                             {% endif %}
                         </div>
                     {% endif %}
@@ -93,7 +93,7 @@
                                 <div>
                                     <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image dark-mode_border" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile_image dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </a>
                                 </div>
@@ -101,7 +101,7 @@
                                 <div>
                                     <div class="profile_div">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image dark-mode_border" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile_image dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
                         <button class="btn dropdown-toggle dropdown_arrow border-0 fw-bold edit_button_metric desktop-hide dark-mode" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Edit
                         </button>
-                        <ul class="dropdown-menu dark-mode_border dark-mode" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu dark-mode-border dark-mode" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item dark-mode" href="/player/edit/{{player.id}}">Edit Player</a></li>
                             <li><a class="dropdown-item dark-mode" href="/player/edit/stats/{{player.id}}">Edit Stats</a></li>
                             <li><a class="dropdown-item dark-mode" href="/player/delete/{{player.id}}/{{team.id}}">Delete</a></li>
@@ -315,7 +315,7 @@
                                 <td id="player_profile_pic_padding">
                                     <div class="profile_div">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image_temp dark-mode_border" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile_image_temp dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </div>
                                 </td>
