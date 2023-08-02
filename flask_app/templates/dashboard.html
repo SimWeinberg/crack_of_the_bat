@@ -132,7 +132,7 @@
                         <span class="navbar-text me-2">Hello {{coach_and_teams.first_name}}</span>
                         <a href="/coach/upload/pic" button class="avatar">
                             {% if coach_and_teams.image_path != None %}
-                                <img class="profile-image_temp" src="{{coach_and_teams.image_path}}" alt="profile image">
+                                <img class="profile_image_temp" src="{{coach_and_teams.image_path}}" alt="profile image">
                             {% endif %}
                         </a>
                     {% elif parent_and_teams %}
