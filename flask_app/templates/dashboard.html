@@ -54,8 +54,10 @@
                         </div>
                     {% elif parent_and_teams %}
                         <div>
-                            <a href="#" button class="avatar">
-                                
+                            <a href="/parent/upload/pic" button class="avatar">
+                                {% if parent_and_teams.image_path != None %}
+                                    <img class="profile-image dark-mode-border" src="{{parent_and_teams.image_path}}" alt="profile image">
+                                {% endif %}
                             </a>
                         </div>
                     {% endif %}

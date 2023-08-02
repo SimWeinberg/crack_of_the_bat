@@ -77,7 +77,7 @@ def coach_upload_pic():
     data = {
         "id" : session['user_id']
     }
-    return render_template('coach_upload_pic.html', coach = Coach.get_coach(data))
+    return render_template('upload_pic.html', coach = Coach.get_coach(data))
 
 @app.route('/coach/upload/pic/<int:id>')
 def coach_upload_pic_from_team_view(id):

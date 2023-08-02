@@ -14,8 +14,13 @@ bcrypt = Bcrypt(app)
 import requests
 
 import os
+from werkzeug.utils import secure_filename
 
+UPLOAD_FOLDER = 'C:/Users/Simcha/Documents/Python/projects_and_algorithms/crack_of_the_bat/flask_app/static/images'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/parent/login', methods=['POST'])
+
 def parent_login():
     data = { 
         "email" : request.form['email'] 
@@ -63,6 +68,15 @@ def parent_dashboard():
         "id" : session['user_id']
     }
     return render_template('dashboard.html', parent_and_teams = Parent.get_parent_and_teams(data))
+
+@app.route('/parent/upload/pic')
+def parent_upload_pic():
+    if not 'user_id' in session:
+        return redirect('/')
+    data = {
+        "id" : session['user_id']
+    }
+    return render_template('upload_pic.html', parent = Parent.get_parent(data))
 
 @app.route('/parent/team/view/<int:id>/<int:id2>')
 def parent_team_view(id, id2):
