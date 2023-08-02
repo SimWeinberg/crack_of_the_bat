@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container-fluid container_main">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_margin_bottom desktop-hide">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark desktop-hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="row d-flex justify-content-center desktop-hide">
-                    <div class="col-2 bg-dark text-light m-4 p-4 desktop-hide">
+                    <div class="m-4 p-4 desktop-hide">
                         {% for message in messages %}
                             <p class="text-center">{{message}}</p>
                         {% endfor %}
