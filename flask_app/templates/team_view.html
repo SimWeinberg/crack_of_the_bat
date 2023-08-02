@@ -61,14 +61,14 @@
                         <div>
                             <a href="/coach/upload/pic/{{team.id}}" button class="avatar">
                                 {% if coach.image_path != None %}
-                                    <img class="profile_image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
+                                    <img class="profile-image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
                                 {% endif %}
                             </a>
                         </div>
                     {% elif parent %}
                         <div class="avatar">
                             {% if coach.image_path != None %}
-                                <img class="profile_image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
+                                <img class="profile-image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
                             {% endif %}
                         </div>
                     {% endif %}
@@ -91,7 +91,7 @@
                                 <div>
                                     <a href="/player/upload/pic/{{player.id}}" button class="avatar">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image dark-mode-border" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile-image dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </a>
                                 </div>
@@ -99,7 +99,7 @@
                                 <div>
                                     <div class="avatar">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image dark-mode-border" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile-image dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </div>
                                 </div>
@@ -267,7 +267,7 @@
                         <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
                         <a href="/coach/upload/pic/{{team.id}}" button class="avatar">
                             {% if coach.image_path != None %}
-                                <img class="profile_image_temp" src="{{coach.image_path}}" alt="profile image">   
+                                <img class="profile-image_temp" src="{{coach.image_path}}" alt="profile image">   
                             {% endif %}
                         </a>
                     {% elif parent %}
@@ -305,7 +305,7 @@
                                 <td id="player_profile_pic_padding">
                                     <a href="/player/upload/pic/{{player.id}}" button class="avatar">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image_temp" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile-image_temp" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </a>
                                 </td>
@@ -313,7 +313,7 @@
                                 <td id="player_profile_pic_padding">
                                     <div class="avatar">
                                         {% if player.image_path != None %}
-                                            <img class="profile_image_temp dark-mode-border" src="{{player.image_path}}" alt="profile image">
+                                            <img class="profile-image_temp dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
                                     </div>
                                 </td>

@@ -76,7 +76,7 @@
     }
 }
 
-.profile_image {
+.profile-image {
         height: 85px; 
         width: 85px; 
         object-fit: cover;
