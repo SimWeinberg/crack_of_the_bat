@@ -46,7 +46,7 @@
                 <div class="col-3 d-flex justify-content-center">
                     {% if not parent_and_teams %}
                         <div>
-                            <a href="/coach/upload/pic" button class="profile_div">
+                            <a href="/coach/upload/pic" button class="avatar">
                                 {% if coach_and_teams.image_path != None %}
                                     <img class="profile_image dark-mode-border" src="{{coach_and_teams.image_path}}" alt="profile image">
                                 {% endif %}
@@ -54,7 +54,7 @@
                         </div>
                     {% elif parent_and_teams %}
                         <div>
-                            <a href="#" button class="profile_div">
+                            <a href="#" button class="avatar">
                                 
                             </a>
                         </div>
@@ -131,7 +131,7 @@
                     </ul>
                     {% if not parent_and_teams %}
                         <span class="navbar-text me-2">Hello {{coach_and_teams.first_name}}</span>
-                        <a href="/coach/upload/pic" button class="profile_div">
+                        <a href="/coach/upload/pic" button class="avatar">
                             {% if coach_and_teams.image_path != None %}
                                 <img class="profile_image_temp" src="{{coach_and_teams.image_path}}" alt="profile image">
                             {% endif %}
@@ -139,7 +139,7 @@
                     {% elif parent_and_teams %}
                         <span class="navbar-text me-2">Hello {{parent_and_teams.first_name}}</span>
                         <div>
-                            <a href="#" button class="profile_div">
+                            <a href="#" button class="avatar">
                                 
                             </a>
                         </div>

@@ -52,23 +52,21 @@
             </div>
         </nav>
         <div class="p-1 justify-content-center desktop-hide">
-            <!-- <h2 class="fw-bold header_metric d-flex justify-content-center text-center">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2> -->
             <h2 class="fw-bold d-flex justify-content-center text-center header">{{team.year}} {{team.name}} {{team.wins}}-{{team.losses}}</h2>
         </div>
         <div class="container desktop-hide">
-            <!-- <div class="row justify-content-center coach_div_padding"> -->
             <div class="row justify-content-center">
                 <div class="col-3 d-flex justify-content-center">
                     {% if not parent %}
                         <div>
-                            <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
+                            <a href="/coach/upload/pic/{{team.id}}" button class="avatar">
                                 {% if coach.image_path != None %}
                                     <img class="profile_image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
                                 {% endif %}
                             </a>
                         </div>
                     {% elif parent %}
-                        <div class="profile_div">
+                        <div class="avatar">
                             {% if coach.image_path != None %}
                                 <img class="profile_image dark-mode-border" src="{{coach.image_path}}" alt="profile image">
                             {% endif %}
@@ -91,7 +89,7 @@
                         <div class="col-3 d-flex justify-content-center">
                             {% if not parent %}
                                 <div>
-                                    <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
+                                    <a href="/player/upload/pic/{{player.id}}" button class="avatar">
                                         {% if player.image_path != None %}
                                             <img class="profile_image dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
@@ -99,7 +97,7 @@
                                 </div>
                             {% elif parent %}
                                 <div>
-                                    <div class="profile_div">
+                                    <div class="avatar">
                                         {% if player.image_path != None %}
                                             <img class="profile_image dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
@@ -267,7 +265,7 @@
                     </ul>
                     {% if not parent %}
                         <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
-                        <a href="/coach/upload/pic/{{team.id}}" button class="profile_div">
+                        <a href="/coach/upload/pic/{{team.id}}" button class="avatar">
                             {% if coach.image_path != None %}
                                 <img class="profile_image_temp" src="{{coach.image_path}}" alt="profile image">   
                             {% endif %}
@@ -305,7 +303,7 @@
                         <tr>
                             {% if not parent %}
                                 <td id="player_profile_pic_padding">
-                                    <a href="/player/upload/pic/{{player.id}}" button class="profile_div">
+                                    <a href="/player/upload/pic/{{player.id}}" button class="avatar">
                                         {% if player.image_path != None %}
                                             <img class="profile_image_temp" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
@@ -313,7 +311,7 @@
                                 </td>
                             {% elif parent %}
                                 <td id="player_profile_pic_padding">
-                                    <div class="profile_div">
+                                    <div class="avatar">
                                         {% if player.image_path != None %}
                                             <img class="profile_image_temp dark-mode-border" src="{{player.image_path}}" alt="profile image">
                                         {% endif %}
