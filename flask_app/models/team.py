@@ -140,6 +140,7 @@ class Team:
                 "email" : row['email'],
                 "password" : row['password'],
                 "force_reset" : row['force_reset'],
+                "image_path" : row['image_path'],
                 "created_at" : row['created_at'],
                 "updated_at" : row['updated_at'],
                 "team_id" : row['team_id'],

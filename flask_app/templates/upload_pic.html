@@ -67,7 +67,7 @@
         {% endwith %}
 
 
-        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_margin_bottom">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_margin_bottom mobile_hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,44 +75,67 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/coach/dashboard">Dashboard</a>
-                        </li>
+                        {% if not parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/coach/dashboard">Dashboard</a>
+                            </li>
+                        {% elif parent %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/parent/dashboard">Dashboard</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
-                    <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
-                    {% if coach.image_path != None %}
-                        <img class="profile-image" src="{{coach.image_path}}" alt="profile image">
-                    {% else %}
-                        <div class="avatar"></div>   
+                    {% if not parent %}
+                        <span class="navbar-text me-2">Hello {{coach.first_name}}</span>
+                        {% if coach.image_path != None %}
+                            <img class="profile-image" src="{{coach.image_path}}" alt="profile image">
+                        {% else %}
+                            <div class="avatar"></div>   
+                        {% endif %}
+                    {% elif parent %}
+                        <span class="navbar-text me-2">Hello {{parent.first_name}}</span>
+                        {% if parent.image_path != None %}
+                            <img class="profile-image" src="{{parent.image_path}}" alt="profile image">
+                        {% else %}
+                            <div class="avatar"></div>   
+                        {% endif %}
                     {% endif %}
                 </div>  
             </div>
         </nav>
-        <div class="row d-flex justify-content-center">
-            <div class="col-2 bg-dark text-light m-4 p-4">
-                <h3>Upload Coach Pic</h3>
+        <div class="row d-flex justify-content-center mobile_hide">
+            <div class="col-2 bg-dark text-light m-4 p-4 mobile_hide">
+                <h3>Upload Pic</h3>
                 <br>
-                <form action="/coach/upload/pic/file" method=post enctype=multipart/form-data>
-                    <input type="hidden" name="team_id" value="{{team_id}}">
-                    <input type=file name=file>
-                    <input type=submit value=Upload>
-                </form>
+                {% if not parent %}
+                    <form action="/coach/upload/pic/file" method=post enctype=multipart/form-data>
+                        <input type="hidden" name="team_id" value="{{team_id}}">
+                        <input type=file name=file>
+                        <input type=submit value=Upload>
+                    </form>
+                {% elif parent %}
+                    <form action="/parent/upload/pic/file" method=post enctype=multipart/form-data>
+                        <input type="hidden" name="team_id" value="{{team_id}}">
+                        <input type=file name=file>
+                        <input type=submit value=Upload>
+                    </form>
+                {% endif %}
             </div>
         </div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <div class="row d-flex justify-content-center">
-                    <div class="col-2 bg-dark text-light m-4 p-4">
+                <div class="row d-flex justify-content-center mobile_hide">
+                    <div class="col-2 bg-dark text-light m-4 p-4 mobile_hide">
                         {% for message in messages %}
                             <p class="text-center">{{message}}</p>
                         {% endfor %}
                     </div>
                 </div>
             {% endif %}
-        {% endwith %} -->
+        {% endwith %}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

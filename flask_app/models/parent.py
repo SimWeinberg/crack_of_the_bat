@@ -24,6 +24,7 @@ class Parent:
         self.email = data['email']
         self.password = data['password']
         self.force_reset = data['force_reset']
+        self.image_path = data['image_path']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.teams = []
@@ -121,6 +122,11 @@ class Parent:
         if len(result) < 1:
             return False
         return cls(result[0])
+    
+    @classmethod
+    def create_image(cls, data):
+        query = "UPDATE parents SET image_path = %(image_path)s WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)
     
     @classmethod
     def reset_password(cls, data):

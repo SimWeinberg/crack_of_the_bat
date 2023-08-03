@@ -19,8 +19,8 @@ from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = 'C:/Users/Simcha/Documents/Python/projects_and_algorithms/crack_of_the_bat/flask_app/static/images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-@app.route('/parent/login', methods=['POST'])
 
+@app.route('/parent/login', methods=['POST'])
 def parent_login():
     data = { 
         "email" : request.form['email'] 
@@ -77,6 +77,45 @@ def parent_upload_pic():
         "id" : session['user_id']
     }
     return render_template('upload_pic.html', parent = Parent.get_parent(data))
+
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/parent/upload/pic/file', methods=['GET', 'POST'])
+def parent_upload_pic_file():
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            if request.form['team_id']:
+                team_id = request.form['team_id']
+                return redirect(f'/parent/upload/pic/{team_id}')
+            return redirect('/parent/upload/pic')
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            if request.form['team_id']:
+                team_id = request.form['team_id']
+                return redirect(f'/parent/upload/pic/{team_id}')
+            return redirect('/parent/upload/pic')
+        if not allowed_file(file.filename):
+            flash('Invalid file')
+            if request.form['team_id']:
+                team_id = request.form['team_id']
+                return redirect(f'/parent/upload/pic/{team_id}')
+            return redirect('/parent/upload/pic')
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            data = {
+                "image_path" : '/static/images/'+filename,
+                "id" : session['user_id']
+            }
+            Parent.create_image(data)
+        if request.form['team_id']:
+            team_id = request.form['team_id']
+            return redirect(f'/team/view/{team_id}')
+        return redirect('/parent/dashboard')
 
 @app.route('/parent/team/view/<int:id>/<int:id2>')
 def parent_team_view(id, id2):
