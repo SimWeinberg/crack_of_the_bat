@@ -10,7 +10,52 @@
 </head>
 <body>
     <div class="container-fluid container_main">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_margin_bottom">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark desktop-hide">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/coach/dashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        <div class="row d-flex justify-content-center desktop-hide">
+            <div class="form">
+                <h3>Edit Team</h3>
+                <form action="/team/update" method="post">
+                    <input type="hidden" name="id" value="{{team.id}}">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" name="name" value="{{team.name}}">
+                    <label for="year">Year:</label>
+                    <input type="number" class="form-control" name="year" value="{{team.year}}">
+                    <br>
+                    <input type="submit" class="btn btn-primary form-control" value="Edit Team">
+                </form>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="row d-flex justify-content-center desktop-hide">
+                    <div class="m-4 p-4 desktop-hide">
+                        {% for message in messages %}
+                            <p class="text-center">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_margin_bottom mobile_hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,8 +79,8 @@
                 </div>  
             </div>
         </nav>
-        <div class="row d-flex justify-content-center">
-            <div class="col-2 bg-dark text-light m-4 p-4">
+        <div class="row d-flex justify-content-center mobile_hide">
+            <div class="col-2 bg-dark text-light m-4 p-4 mobile_hide">
                 <h3>Edit A Team</h3>
                 <form action="/team/update" method="post">
                     <input type="hidden" name="id" value="{{team.id}}">
@@ -50,8 +95,8 @@
         </div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <div class="row d-flex justify-content-center">
-                    <div class="col-2 bg-dark text-light m-4 p-4">
+                <div class="row d-flex justify-content-center mobile_hide">
+                    <div class="col-2 bg-dark text-light m-4 p-4 mobile_hide">
                         {% for message in messages %}
                             <p class="text-center">{{message}}</p>
                         {% endfor %}

@@ -196,12 +196,6 @@
     margin-bottom: 24px;
 }
 
-/* .file {
-    padding-top: 8px;
-    border: none;
-    border-right: white;
-} */
-
 @media screen and (min-width: 992px) {
     #coach_table_fname_margin {
         padding-left: 12px;
