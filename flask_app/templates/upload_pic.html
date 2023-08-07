@@ -37,13 +37,12 @@
         </nav>
         <div class="row d-flex justify-content-center desktop-hide">
             <div class="form">
-                <h3>Upload Pic</h3>
-                <br>
+                <h3 class="upload-pic-margin">Upload Pic</h3>
                 {% if not parent %}
                     <form action="/coach/upload/pic/file" method=post enctype=multipart/form-data>
                         <input type="hidden" name="team_id" value="{{team_id}}">
-                        <input type=file name=file>
-                        <input type=submit value=Upload>
+                        <input type=file class="form-control upload-pic-margin" name=file>
+                        <input type=submit class="form-control" value=Upload>
                     </form>
                 {% elif parent %}
                     <form action="/parent/upload/pic/file" method=post enctype=multipart/form-data>
