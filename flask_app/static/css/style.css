@@ -201,6 +201,22 @@
     margin-bottom: 15px;
 }
 
+#home-header-div {
+    text-align: center;
+}
+
+#home-header {
+    margin-bottom: 0px;
+}
+
+#home-batter {
+    padding-top: 4px;
+}
+
+.home-text-margin {
+    margin-bottom: 4px;
+}
+
 @media screen and (min-width: 992px) {
     #coach_table_fname_margin {
         padding-left: 12px;

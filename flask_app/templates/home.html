@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container-fluid container_main">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark desktop-hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,16 +34,52 @@
                 </div>  
             </div>
         </nav>
-        <div class="d-flex justify-content-center align-items-baseline" id="home_welcome_padding_top">
-            <div>
+        <div class="justify-content-center desktop-hide" id="home_welcome_padding_top">
+            <div id="home-header-div">
+                <img src="static/images/batter_258_left.png" id="home-batter" alt="batter pic">
+            </div>
+            <div class="text-center desktop-hide">
+                <h1 class="fw-bold display-2 home-text-margin" id="home-header">Crack of The Bat!</h1>
+                <h3 class="home-text-margin">Build teams, add players, track stats and post schedules.  Invite parents to view.</h3>
+                <h3>Register <a href="/register">here.</a>  Already registered?  Login <a href="/login">here.</a></h3>
+            </div>
+        </div>
+        
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mobile_hide">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>  
+            </div>
+        </nav>
+        <div class="d-flex justify-content-center align-items-baseline mobile_hide" id="home_welcome_padding_top">
+            <div class="mobile_hide">
                 <img src="static/images/batter_258_left.png" alt="batter pic">
             </div>
-            <div class="text-center">
+            <div class="text-center mobile_hide">
                 <h1 class="fw-bold display-1">Crack of The Bat!</h1>
                 <h3>Build teams, add players, track stats and post schedules.  Invite parents to view.</h3>
                 <h3>Register <a href="/register">here.</a>  Already registered?  Login <a href="/login">here.</a></h3>
             </div>
-            <div>
+            <div class="mobile_hide">
                 <img src="static/images/batter_258_right.png" alt="batter pic">
             </div>
         </div>
