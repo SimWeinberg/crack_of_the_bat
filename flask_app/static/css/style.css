@@ -196,6 +196,11 @@
     margin-bottom: 24px;
 }
 
+#delete-team {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 @media screen and (min-width: 992px) {
     #coach_table_fname_margin {
         padding-left: 12px;
