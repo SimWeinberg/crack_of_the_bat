@@ -217,6 +217,21 @@
     margin-bottom: 4px;
 }
 
+.logo-div {
+    height: 70px;
+    width: 70px;
+    border-radius: 20%;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+}
+
+.logo {
+    margin-bottom: 0px;
+}
+
+.logo-home-padding {
+    padding-top: 10px;
+}
+
 @media screen and (min-width: 992px) {
     #coach_table_fname_margin {
         padding-left: 12px;
