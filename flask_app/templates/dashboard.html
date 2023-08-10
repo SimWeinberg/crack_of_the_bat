@@ -16,14 +16,20 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="navbar-brand row justify-content-center nav-element-spacing">
+                    <div class="d-flex align-items-center justify-content-center logo-div">
+                        <h1 class="fw-bold display-1 logo">C</h1>
+                        <img class="invert" src="/static/images/batter_40.png" alt="batter pic">
+                    </div>
+                </div>
                 {% if not parent_and_teams %}
-                    <a class="navbar-brand profile-image-nav-spacing" href="/coach/upload/pic" button class="avatar-nav">
+                    <a class="navbar-brand nav-element-spacing" href="/coach/upload/pic" button class="avatar-nav">
                         {% if coach_and_teams.image_path != None %}
                             <img class="profile-image-nav" src="{{coach_and_teams.image_path}}" alt="profile image">
                         {% endif %}
                     </a>
                 {% elif parent_and_teams %}
-                    <a class="navbar-brand profile-image-nav-spacing" href="/parent/upload/pic" button class="avatar-nav">
+                    <a class="navbar-brand nav-element-spacing" href="/parent/upload/pic" button class="avatar-nav">
                         {% if parent_and_teams.image_path != None %}
                             <img class="profile-image-nav" src="{{parent_and_teams.image_path}}" alt="profile image">
                         {% endif %}

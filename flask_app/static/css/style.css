@@ -108,7 +108,7 @@
     border-radius:50px;
 }
 
-.profile-image-nav-spacing {
+.nav-element-spacing {
     padding-top: 0px;
     padding-bottom: 0px;
     margin-right: 0px;
@@ -239,8 +239,8 @@
 }
 
 .logo-div {
-    height: 70px;
-    width: 70px;
+    height: 40px;
+    width: 40px;
     border-radius: 20%;
     box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
 }
@@ -251,6 +251,10 @@
 
 .logo-home-padding {
     padding-top: 10px;
+}
+
+.invert {
+    filter: invert(1);
 }
 
 @media screen and (min-width: 992px) {
