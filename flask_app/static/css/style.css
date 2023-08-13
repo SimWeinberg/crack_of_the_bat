@@ -101,6 +101,10 @@
     }
 } */
 
+.home-logo-img {
+    padding-right: 4px;
+}
+
 .profile-image-nav {
     height: 40px; 
     width: 40px; 
@@ -239,6 +243,7 @@
 }
 
 .logo-div-home {
+    margin-top: 65px;
     height: 70px;
     width: 70px;
     border-radius: 20%;
@@ -256,8 +261,12 @@
     margin-bottom: 0px;
 }
 
-.logo-home-padding {
+/* .logo-home-padding {
     padding-top: 10px;
+} */
+
+.logo-div-spacing {
+    margin-right: 17px;
 }
 
 .invert {
