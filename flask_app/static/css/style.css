@@ -49,7 +49,7 @@
 }
 
 .form {
-    padding-top: 10px;
+    padding-top: 72px;
     padding-left: 24px;
     padding-right: 24px;
 }
@@ -101,9 +101,9 @@
     }
 } */
 
-.home-logo-img {
+/* .home-logo-img {
     padding-right: 4px;
-}
+} */
 
 .profile-image-nav {
     height: 40px; 
@@ -265,7 +265,7 @@
     padding-top: 10px;
 } */
 
-.logo-div-spacing {
+.nav-logo-div-spacing {
     margin-right: 17px;
 }
 

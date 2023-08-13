@@ -10,7 +10,68 @@
 </head>
 <body>
     <div class="container-fluid container_main">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_margin_bottom">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top desktop-hide">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-brand row justify-content-center nav-element-spacing nav-logo-div-spacing">
+                    <div class="d-flex align-items-center justify-content-center logo-div">
+                        <h1 class="fw-bold display-1 logo">C</h1>
+                        <img class="invert" src="/static/images/batter_40.png" alt="batter pic">
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div> 
+            </div>
+        </nav>
+        <div class="row d-flex justify-content-center desktop-hide">
+            <div class="form">
+                <h3>Coach's Registration</h3>
+                <form action="/register/coach" method="post">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" class="form-control" name="first_name">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" class="form-control" name="last_name">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" name="email">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" name="password">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" class="form-control" name="confirm_password">
+                    <br>
+                    <input type="submit" class="btn btn-primary form-control" value="Register">
+                </form>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="row d-flex justify-content-center desktop-hide">
+                    <div class="m-4 p-4 desktop-hide">
+                        {% for message in messages %}
+                            <p class="text-center">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav_margin_bottom mobile_hide">
             <div class="container-fluid">
                 <span class="navbar-brand mb-0 h1">Crack of The Bat!</span>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,8 +95,8 @@
                 </div>  
             </div>
         </nav>
-        <div class="row d-flex justify-content-center">
-            <div class="col-2 bg-dark text-light m-4 p-4">
+        <div class="row d-flex justify-content-center mobile_hide">
+            <div class="col-2 bg-dark text-light m-4 p-4 mobile_hide">
                 <h3>Coach's Registration</h3>
                 <form action="/register/coach" method="post">
                     <label for="first_name">First Name:</label>
@@ -55,8 +116,8 @@
         </div>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <div class="row d-flex justify-content-center">
-                    <div class="col-2 bg-dark text-light m-4 p-4">
+                <div class="row d-flex justify-content-center mobile_hide">
+                    <div class="col-2 bg-dark text-light m-4 p-4 mobile_hide">
                         {% for message in messages %}
                             <p class="text-center">{{message}}</p>
                         {% endfor %}
